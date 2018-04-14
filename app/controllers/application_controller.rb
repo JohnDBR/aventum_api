@@ -5,12 +5,11 @@ class ApplicationController < ActionController::API
     begin
       token = AUTHENTICATION_SERVICE.decode_token(request.headers["Authorization"].split(" ")[1])[0]
       if !token.nil? && token["exp"] > Time.now.to_i && token["id"].is_a?(Integer)
-        @teacher = Teacher.find token["id"]
       else
         raise "USER_NOT_FOUND"
       end
     rescue Exception => e
-      render status: 401, json: TEACHER_NOT_FOUND    
+      render status: 401, json: USER_NOT_FOUND    
     end
   end
 
@@ -25,6 +24,18 @@ class ApplicationController < ActionController::API
       end
     else
       render json: INVALID_PROFILE_PICTURE
+    end
+  end
+
+  def is_student
+    unless @user["role"] == "student"
+      render json: {err: 'Student not found', code: "007"}
+    end
+  end
+
+  def is_admin
+    unless @user["role"] == "admin"
+      render json: {err: 'Admin not found', code: "007"}
     end
   end
 end

@@ -1,30 +1,32 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :update, :destroy]
+  before_action :set_user
+  before_action :is_student, only: [:search, :show, :create, :update]
+  before_action :set_transaction, only: [:show, :update]
 
-  # GET /transactions
-  def index
-    @transactions = Transaction.all
-
-    render json: @transactions
+  # POST /transactions/search
+  def search
+    render json: @user.transactions.where(search_params)
   end
 
-  # GET /transactions/1
+  # GET /transactions/:id
   def show
     render json: @transaction
   end
 
-  # POST /transactions
+  # POST /transaction
   def create
     @transaction = Transaction.new(transaction_params)
-
     if @transaction.save
-      render json: @transaction, status: :created, location: @transaction
+      unless @user.update({coins: @user["coins"].to_i + transaction_params["coins"].to_i})
+        render json: {err: 'Error seting user coins', code: '010'}
+      end
+      render json: @transaction
     else
       render json: @transaction.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /transactions/1
+  # PUT /transaction
   def update
     if @transaction.update(transaction_params)
       render json: @transaction
@@ -33,19 +35,16 @@ class TransactionsController < ApplicationController
     end
   end
 
-  # DELETE /transactions/1
-  def destroy
-    @transaction.destroy
-  end
-
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_transaction
       @transaction = Transaction.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def transaction_params
-      params.fetch(:transaction, {})
+      params.permit(:coins, :transaction_code, :kind).merge(status: 'completed', user: @user)
+    end
+
+    def search_params
+      params.permit(:status)
     end
 end
