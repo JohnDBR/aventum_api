@@ -5,6 +5,7 @@ class ApplicationController < ActionController::API
     begin
       token = AUTHENTICATION_SERVICE.decode_token(request.headers["Authorization"].split(" ")[1])[0]
       if !token.nil? && token["exp"] > Time.now.to_i && token["id"].is_a?(Integer)
+        @user = User.find(token["id"])
       else
         raise "USER_NOT_FOUND"
       end

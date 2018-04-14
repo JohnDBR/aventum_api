@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  skip_before_action :set_user, only: [:login, :reset_password, :update_password]
+  skip_before_action :set_user, only: [:login, :create, :reset_password, :update_password]
 
   # POST /login
   def login
-    render json: get_user_token(user.find_by_email(user_login_params[:email]))
+    render json: get_user_token(User.find_by_email(user_login_params[:email]))
   end
 
   # GET /users
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = user.new(user_params)
+    @user = User.new(user_params.merge(profile_picture: upload_profile_picture.public_url))
     if @user.save
       render json: @user
     else
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   # DELETE /users
   def destroy
     @user.destroy
-    render json: user_DELETED
+    render json: USER_DELETED
   end
 
   private
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
       if !user.nil? && AUTHENTICATION_SERVICE.get_password(user["password"]) == params[:password]
         return {token: "Bearer #{AUTHENTICATION_SERVICE.create_token(user[:id], 86400)}"}
       else
-        return user_NOT_FOUND
+        return USER_NOT_FOUND
       end
     end
 

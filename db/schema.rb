@@ -13,13 +13,14 @@
 ActiveRecord::Schema.define(version: 2018_04_14_135008) do
 
   create_table "journeys", force: :cascade do |t|
+    t.string "code", limit: 20
     t.string "start", limit: 255
     t.string "end", limit: 255
     t.integer "capacity", limit: 2
     t.integer "price", limit: 3
     t.text "journey_stop", limit: 255
     t.integer "duration", limit: 3
-    t.string "status", limit: 15
+    t.string "status", limit: 15, default: "new"
     t.text "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
