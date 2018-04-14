@@ -1,0 +1,15 @@
+TEACHER_NOT_FOUND = {err: "Profesor no encontrado"}
+STUDENT_NOT_FOUND = {err: "Estudiante no encontrado"}
+INVALID_PROFILE_PICTURE = {err: 'Foto de perfil invalida'}
+CLASS_INITIALIZED = {err: 'Esta clase ya ha sido dictada hoy'}
+CLASS_FINISHED = {err: 'La clase ha finalizado'}
+EMAIL_SENT = {msg: 'Correo enviado'}
+STUDENT_DELETED = {msg: 'Estudiante eliminado correctamente'}
+TEACHER_DELETED = {msg: 'Profesor eliminado correctamente'}
+CLASS_DELETED = {msg: 'Clase eliminada correctamente'}
+STATISTICS_ERROR = {err: "Esta clase no tiene estadisticas"}
+STUDENTS_ADDED = {msg: 'Estudiantes agregados correctamente'}
+STUDENTS_ADDED_ERROR = {err: 'Error al agregar estudiantes'}
+ATTENDANCE = {msg: "Llamado a lista completado correctamente"}
+ATTENDANCE_ERROR = {err: "Error al completar llamado a lista"}
+PER_PAGE = 10
