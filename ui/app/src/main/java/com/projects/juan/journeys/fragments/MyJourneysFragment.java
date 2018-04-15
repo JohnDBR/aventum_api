@@ -96,7 +96,7 @@ public class MyJourneysFragment extends Fragment {
                 journeys.clear();
                 for(int i = 0; i < journeyses_response.length(); i++){
                     JSONObject cr = journeyses_response.getJSONObject(i);
-                    journeys.add(new Journey(cr.getInt("id"), cr.getString("start"), cr.getString("end"), cr.getInt("capacity"), cr.getInt("price"), cr.getInt("duration"), cr.getString("journey_stop"), cr.getString("tags")));
+                    journeys.add(new Journey(cr.getInt("id"), cr.getString("code"), cr.getString("start"), cr.getString("end"), cr.getInt("capacity"), cr.getInt("price"), cr.getInt("duration"), cr.getString("journey_stop"), cr.getString("tags")));
                 }
                 Collections.reverse(journeys);
                 adapter.notifyDataSetChanged();

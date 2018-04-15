@@ -123,20 +123,18 @@ public class SignupActivity extends AppCompatActivity {
             numberVerification(phone.getEditText().getText().toString(), new CallBack() {
                 @Override
                 public void messageSent(final String code) {
-                    signUpRequets(progressDialog);
-
-//                    smsBroadcastReceiver.getSmsCode().setListener(new SmsCode.ChangeListener() {
-//                        @Override
-//                        public void onChange(String sms_code) {
-//                            if(code.equals(sms_code)) {
-//                                signUpRequets(loginButton, progressDialog, img_profile_file, first_name.getEditText().getText().toString(), last_name.getEditText().getText().toString(), cc.getEditText().getText().toString(), email.getEditText().getText().toString(), phone.getEditText().getText().toString(), password.getEditText().getText().toString());
-//                            }else{
-//                                progressDialog.cancel();
-//                                loginButton.setEnabled(true);
-//                                Toast.makeText(getApplicationContext(), "Number verification failed, try again", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                    });
+                    smsBroadcastReceiver.getSmsCode().setListener(new SmsCode.ChangeListener() {
+                        @Override
+                        public void onChange(String sms_code) {
+                            if(code.equals(sms_code)) {
+                                signUpRequets(progressDialog);
+                            }else{
+                                progressDialog.cancel();
+                                loginButton.setEnabled(true);
+                                Toast.makeText(getApplicationContext(), "Number verification failed, try again", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
             });
         }

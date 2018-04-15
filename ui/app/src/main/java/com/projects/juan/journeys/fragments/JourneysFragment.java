@@ -47,7 +47,7 @@ public class JourneysFragment extends Fragment {
 
     @Override
     public void onStart() {
-        if(journeys.isEmpty()) getjourneyses(new JSONObject());
+        if(journeys.isEmpty()) getjourneys(new JSONObject());
         super.onStart();
     }
 
@@ -64,28 +64,7 @@ public class JourneysFragment extends Fragment {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getjourneyses(new JSONObject());
-            }
-        });
-
-        final EditText edit_search = (EditText) view.findViewById(R.id.edit_search_journeys);
-
-        edit_search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                JSONObject search_object = new JSONObject();
-                try {
-                    search_object.put("title", edit_search.getText());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                getjourneyses(search_object);
+                getjourneys(new JSONObject());
             }
         });
 
@@ -122,48 +101,48 @@ public class JourneysFragment extends Fragment {
         }, new JourneysAdapter.OnLongClickListener() {
             @Override
             public void onLongClick(final Journey journey) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//                builder.setTitle("Join to " + journey.getTitle());
-//                builder.setMessage("Price: " + journey.getPrice());
-//
-//                builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        JSONObject join_params = new JSONObject();
-//                        try {
-//                            join_params.put("title", journey.getTitle());
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                        HttpRequests.postRequest(getContext(), getArguments().getString("token"),
-//                                getResources().getString(R.string.GET_JOURNEYS) + journey.getId() + "/join", join_params, "Network error", new HttpRequests.CallBack() {
-//                                    @Override
-//                                    public void sendResponse(String response) {
-//                                        try {
-//                                            JSONObject jr = new JSONObject(response);
-//                                            if(response.contains("err")){
-//                                                Log.d("err", response);
-//                                                Toast.makeText(getContext(), jr.getString("err"), Toast.LENGTH_LONG).show();
-//                                            }else{
-//                                                Toast.makeText(getContext(), "Joined to " + journey.getTitle() + " successfully", Toast.LENGTH_LONG).show();
-//                                            }
-//                                        } catch (JSONException e) {
-//                                            e.printStackTrace();
-//                                        }
-//                                    }
-//                                });
-//                    }
-//                });
-//                builder.setNegativeButton("Cancel", null);
-//
-//                AlertDialog dialog = builder.create();
-//                dialog.show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Join to " + journey.getCode());
+                builder.setMessage("Price: " + journey.getPrice());
+
+                builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        JSONObject join_params = new JSONObject();
+                        try {
+                            join_params.put("code", journey.getCode());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        HttpRequests.postRequest(getContext(), getArguments().getString("token"),
+                                getResources().getString(R.string.GET_JOURNEYS) + "/" + journey.getId() + "/join", join_params, "Network error", new HttpRequests.CallBack() {
+                                    @Override
+                                    public void sendResponse(String response) {
+                                        try {
+                                            JSONObject jr = new JSONObject(response);
+                                            if(response.contains("err")){
+                                                Log.d("err", response);
+                                                Toast.makeText(getContext(), jr.getString("err"), Toast.LENGTH_LONG).show();
+                                            }else{
+                                                Toast.makeText(getContext(), "Joined to " + journey.getCode() + " successfully", Toast.LENGTH_LONG).show();
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+                    }
+                });
+                builder.setNegativeButton("Cancel", null);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
         recyclerView.setAdapter(adapter);
     }
 
-    private void getjourneyses(JSONObject search){
+    private void getjourneys(JSONObject search){
         HttpRequests.postRequest(getContext(), getArguments().getString("token"), getResources().getString(R.string.GET_SEARCH_JOURNEYS), search, "journeyses not found", new HttpRequests.CallBack() {
             @Override
             public void sendResponse(String response) {
@@ -172,7 +151,7 @@ public class JourneysFragment extends Fragment {
                     journeys.clear();
                     for(int i = 0; i < journeyses_response.length(); i++){
                         JSONObject cr = journeyses_response.getJSONObject(i);
-                        journeys.add(new Journey(cr.getInt("id"), cr.getString("start"), cr.getString("end"), cr.getInt("capacity"), cr.getInt("price"), cr.getInt("duration"), cr.getString("journey_stop"), cr.getString("tags")));
+                        journeys.add(new Journey(cr.getInt("id"), cr.getString("code"), cr.getString("start"), cr.getString("end"), cr.getInt("capacity"), cr.getInt("price"), cr.getInt("duration"), cr.getString("journey_stop"), cr.getString("tags")));
                     }
                     Collections.reverse(journeys);
                     adapter.notifyDataSetChanged();

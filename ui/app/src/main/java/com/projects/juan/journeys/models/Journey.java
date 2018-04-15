@@ -15,8 +15,9 @@ public class Journey {
     private String journey_stop;
     private String tags;
 
-    public Journey(int id, String start, String end, int capacity, int price, int duration, String journey_stop, String tags) {
+    public Journey(int id, String code, String start, String end, int capacity, int price, int duration, String journey_stop, String tags) {
         this.id = id;
+        this.code = code;
         this.start = start;
         this.end = end;
         this.capacity = capacity;

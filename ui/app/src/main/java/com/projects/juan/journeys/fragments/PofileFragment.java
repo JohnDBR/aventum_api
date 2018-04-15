@@ -8,9 +8,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.projects.juan.journeys.R;
 import com.projects.juan.journeys.activities.AuthActivity;
 import com.projects.juan.journeys.activities.MainActivity;
@@ -41,19 +44,14 @@ public class PofileFragment extends Fragment {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
 
-        final de.hdodenhof.circleimageview.CircleImageView profile_pic = (de.hdodenhof.circleimageview.CircleImageView) view.findViewById(R.id.my_account_profile_pic);
-
-//        final TextView name_profile = view.findViewById(R.id.name_profile);
-//        final TextView email_profile = view.findViewById(R.id.email_profile);
-//        final TextView coins_profile = view.findViewById(R.id.coins_profile);
-//        final TextView score_profile = view.findViewById(R.id.score_profile);
-//        final TextView role_profile = view.findViewById(R.id.role_profile);
-//        final TextView phone_profile = view.findViewById(R.id.phone_profile);
-//        final TextView studies_profile = view.findViewById(R.id.studies_profile);
+        final ImageView my_account_profile_pic = view.findViewById(R.id.my_account_profile_pic);
+        final TextView my_account_name = view.findViewById(R.id.my_account_name);
+        final TextView my_account_email = view.findViewById(R.id.my_account_email);
+        final TextView my_account_bio = view.findViewById(R.id.my_account_bio);
 
         view.findViewById(R.id.pay_example_profile).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 JSONObject transaction_params = new JSONObject();
                 try {
                     transaction_params.put("coins", "50");
@@ -66,7 +64,7 @@ public class PofileFragment extends Fragment {
                     @Override
                     public void sendResponse(String response) {
                         Toast.makeText(getContext(), "Transaction complete successfully", Toast.LENGTH_SHORT).show();
-//                        getInfo(name_profile, email_profile, coins_profile, score_profile, role_profile, phone_profile, studies_profile);
+                        getInfo(view, my_account_profile_pic, my_account_name, my_account_email, my_account_bio);
                     }
                 });
             }
@@ -82,22 +80,20 @@ public class PofileFragment extends Fragment {
             }
         });
 
-//        getInfo(name_profile, email_profile, coins_profile, score_profile, role_profile, phone_profile, studies_profile);
+        getInfo(view, my_account_profile_pic, my_account_name, my_account_email, my_account_bio);
     }
 
-    private void getInfo(final TextView name_profile, final TextView email_profile, final TextView coins_profile, final TextView score_profile, final TextView role_profile, final TextView phone_profile, final TextView studies_profile){
+    private void getInfo(final View view, final ImageView my_account_profile_pic, final TextView my_account_name, final TextView my_account_email, final TextView my_account_bio){
         HttpRequests.getRequest(getContext(), getArguments().getString("token"), getResources().getString(R.string.GET_USER), "Network error, try again", new HttpRequests.CallBack(){
             @Override
             public void sendResponse(String response) {
                 try {
                     JSONObject user = new JSONObject(response);
-                    name_profile.setText("Name: " + user.getString("first_name") + " " + user.getString("last_name"));
-                    email_profile.setText("Email: " + user.getString("email"));
-                    coins_profile.setText("Coins: " + user.getInt("coins"));
-                    score_profile.setText("Score: " + user.getInt("score"));
-                    role_profile.setText("Role: " + user.getString("role"));
-                    phone_profile.setText("Phone: +57 " + user.getString("phone"));
-                    studies_profile.setText("Studies: " + user.getString("studies"));
+                    my_account_name.setText(user.getString("first_name") + " " + user.getString("last_name"));
+                    my_account_email.setText("Email: " + user.getString("email"));
+                    my_account_bio.setText("Coins: " + user.getString("coins") + "\n" + "CC: " + user.getString("cc") + "\n" + "Phone number: " + user.getString("phone"));
+                    Glide.with(view).load(user.getString("profile_picture")).apply(RequestOptions.circleCropTransform()).into(my_account_profile_pic);
+//                    :id, :first_name, :last_name, :cc, :email, :phone, :location, :profile_picture
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
