@@ -29,8 +29,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    # @user = User.new(user_params.merge(profile_picture: upload_profile_picture.public_url))
-    @user = User.new(user_params.merge(profile_picture: 'https://mvp-resources.s3.amazonaws.com/faeba478-9837-4c6f-a9f4-717f0ef85ebd1523736119.png'))
+    @user = User.new(user_params.merge(profile_picture: upload_profile_picture.public_url))
     if @user.save
       render json: @user
     else
@@ -71,7 +70,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.permit(:first_name, :last_name, :cc, :email, :phone, :password, :location)
+      params.permit(:first_name, :last_name, :cc, :email, :phone, :password, :location, :profile_picture).merge(location: 'test')
     end
 
     def user_login_params

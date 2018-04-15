@@ -41,13 +41,15 @@ public class PofileFragment extends Fragment {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
 
-        final TextView name_profile = view.findViewById(R.id.name_profile);
-        final TextView email_profile = view.findViewById(R.id.email_profile);
-        final TextView coins_profile = view.findViewById(R.id.coins_profile);
-        final TextView score_profile = view.findViewById(R.id.score_profile);
-        final TextView role_profile = view.findViewById(R.id.role_profile);
-        final TextView phone_profile = view.findViewById(R.id.phone_profile);
-        final TextView studies_profile = view.findViewById(R.id.studies_profile);
+        final de.hdodenhof.circleimageview.CircleImageView profile_pic = (de.hdodenhof.circleimageview.CircleImageView) view.findViewById(R.id.my_account_profile_pic);
+
+//        final TextView name_profile = view.findViewById(R.id.name_profile);
+//        final TextView email_profile = view.findViewById(R.id.email_profile);
+//        final TextView coins_profile = view.findViewById(R.id.coins_profile);
+//        final TextView score_profile = view.findViewById(R.id.score_profile);
+//        final TextView role_profile = view.findViewById(R.id.role_profile);
+//        final TextView phone_profile = view.findViewById(R.id.phone_profile);
+//        final TextView studies_profile = view.findViewById(R.id.studies_profile);
 
         view.findViewById(R.id.pay_example_profile).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +66,7 @@ public class PofileFragment extends Fragment {
                     @Override
                     public void sendResponse(String response) {
                         Toast.makeText(getContext(), "Transaction complete successfully", Toast.LENGTH_SHORT).show();
-                        getInfo(name_profile, email_profile, coins_profile, score_profile, role_profile, phone_profile, studies_profile);
+//                        getInfo(name_profile, email_profile, coins_profile, score_profile, role_profile, phone_profile, studies_profile);
                     }
                 });
             }
@@ -80,7 +82,7 @@ public class PofileFragment extends Fragment {
             }
         });
 
-        getInfo(name_profile, email_profile, coins_profile, score_profile, role_profile, phone_profile, studies_profile);
+//        getInfo(name_profile, email_profile, coins_profile, score_profile, role_profile, phone_profile, studies_profile);
     }
 
     private void getInfo(final TextView name_profile, final TextView email_profile, final TextView coins_profile, final TextView score_profile, final TextView role_profile, final TextView phone_profile, final TextView studies_profile){

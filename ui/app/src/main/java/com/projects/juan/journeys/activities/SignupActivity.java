@@ -182,9 +182,9 @@ public class SignupActivity extends AppCompatActivity {
         rp.put("first_name", first_name.getEditText().getText().toString());
         rp.put("last_name", last_name.getEditText().getText().toString());
         rp.put("cc", cc.getEditText().getText().toString().isEmpty());
-        rp.put("email", email.getEditText().getText().toString().isEmpty());
-        rp.put("phone", phone.getEditText().getText().toString().isEmpty());
-        rp.put("password", password.getEditText().getText().toString().isEmpty());
+        rp.put("email", email.getEditText().getText().toString());
+        rp.put("phone", phone.getEditText().getText().toString());
+        rp.put("password", password.getEditText().getText().toString());
         try {
             rp.put("profile_picture", img_profile_file, "image/jpg");
         } catch (FileNotFoundException e) {

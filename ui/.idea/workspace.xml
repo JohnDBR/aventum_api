@@ -45,19 +45,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PofileFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SignupActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/activities/SignupActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-521">
+              <caret line="186" column="70" lean-forward="false" selection-start-line="186" selection-start-column="70" selection-end-line="186" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_pofile.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pofile.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="23" column="43" lean-forward="false" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="43" />
+              <folding>
+                <element signature="e#587#616#0" expanded="true" />
+                <element signature="e#774#806#0" expanded="true" />
+                <element signature="e#1937#1972#0" expanded="true" />
+                <element signature="e#2242#2268#0" expanded="true" />
+                <element signature="e#2666#2701#0" expanded="true" />
+                <element signature="e#2936#2964#0" expanded="true" />
+                <element signature="e#3345#3380#0" expanded="true" />
+                <element signature="e#3712#3740#0" expanded="true" />
+                <element signature="e#4362#4381#0" expanded="true" />
+                <element signature="e#4995#5014#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PofileFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/PofileFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="83" column="5" lean-forward="true" selection-start-line="40" selection-start-column="4" selection-end-line="83" selection-end-column="5" />
+            <state relative-caret-position="-46">
+              <caret line="85" column="5" lean-forward="false" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
               <folding>
-                <element signature="e#1847#3014#0" expanded="true" />
-                <element signature="e#2463#2516#0" expanded="true" />
-                <element signature="e#2570#2988#0" expanded="true" />
-                <element signature="e#2987#2988#0" expanded="true" />
-                <element signature="e#3013#3014#0" expanded="true" />
-                <element signature="e#3080#3411#0" expanded="true" />
-                <element signature="e#3410#3411#0" expanded="true" />
+                <element signature="e#2030#3199#0" expanded="true" />
+                <element signature="e#2646#2699#0" expanded="true" />
+                <element signature="e#2753#3173#0" expanded="true" />
+                <element signature="e#3172#3173#0" expanded="true" />
+                <element signature="e#3198#3199#0" expanded="true" />
+                <element signature="e#3265#3596#0" expanded="true" />
+                <element signature="e#3595#3596#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2126,7 +2160,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/modules/SmsBroadcastReceiver.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/modules/HttpRequests.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/activities/SignupActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_journey_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/adapters/JourneysAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/models/Journey.java" />
@@ -2135,9 +2168,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_journeys.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/MyJourneysFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_pofile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_exit_to_app_24px.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_payment_24px.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/activities/SignupActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_pofile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/PofileFragment.java" />
       </list>
     </option>
@@ -2476,11 +2510,11 @@
             <element signature="imports" expanded="false" />
             <element signature="e#4474#5666#0" expanded="false" />
             <element signature="e#5665#5666#0" expanded="false" />
-            <element signature="e#7796#7839#0" expanded="false" />
-            <element signature="e#7862#8715#0" expanded="false" />
-            <element signature="e#8714#8715#0" expanded="false" />
-            <element signature="e#9424#9599#0" expanded="false" />
-            <element signature="e#9598#9599#0" expanded="false" />
+            <element signature="e#7766#7809#0" expanded="false" />
+            <element signature="e#7832#8685#0" expanded="false" />
+            <element signature="e#8684#8685#0" expanded="false" />
+            <element signature="e#9394#9569#0" expanded="false" />
+            <element signature="e#9568#9569#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2509,11 +2543,11 @@
             <element signature="imports" expanded="false" />
             <element signature="e#4474#5666#0" expanded="false" />
             <element signature="e#5665#5666#0" expanded="false" />
-            <element signature="e#7796#7839#0" expanded="false" />
-            <element signature="e#7862#8715#0" expanded="false" />
-            <element signature="e#8714#8715#0" expanded="false" />
-            <element signature="e#9424#9599#0" expanded="false" />
-            <element signature="e#9598#9599#0" expanded="false" />
+            <element signature="e#7766#7809#0" expanded="false" />
+            <element signature="e#7832#8685#0" expanded="false" />
+            <element signature="e#8684#8685#0" expanded="false" />
+            <element signature="e#9394#9569#0" expanded="false" />
+            <element signature="e#9568#9569#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2672,23 +2706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/activities/SignupActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="186" column="82" lean-forward="true" selection-start-line="186" selection-start-column="82" selection-end-line="186" selection-end-column="82" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4474#5666#0" expanded="false" />
-            <element signature="e#5665#5666#0" expanded="false" />
-            <element signature="e#7796#7839#0" expanded="false" />
-            <element signature="e#7862#8715#0" expanded="false" />
-            <element signature="e#8714#8715#0" expanded="false" />
-            <element signature="e#9424#9599#0" expanded="false" />
-            <element signature="e#9598#9599#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/models/Journey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -2773,53 +2790,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recycler_view_journey_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="88" column="41" lean-forward="false" selection-start-line="88" selection-start-column="41" selection-end-line="88" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pofile.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1158">
-          <caret line="109" column="46" lean-forward="false" selection-start-line="109" selection-start-column="46" selection-end-line="109" selection-end-column="46" />
-          <folding>
-            <element signature="e#525#554#0" expanded="true" />
-            <element signature="e#712#744#0" expanded="true" />
-            <element signature="e#1875#1910#0" expanded="true" />
-            <element signature="e#2180#2206#0" expanded="true" />
-            <element signature="e#2604#2639#0" expanded="true" />
-            <element signature="e#2874#2902#0" expanded="true" />
-            <element signature="e#3283#3318#0" expanded="true" />
-            <element signature="e#3650#3678#0" expanded="true" />
-            <element signature="e#4300#4319#0" expanded="true" />
-            <element signature="e#4933#4952#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/JourneysFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="62" column="91" lean-forward="false" selection-start-line="62" selection-start-column="91" selection-end-line="62" selection-end-column="91" />
           <folding>
-            <element signature="e#1999#2176#0" expanded="true" />
-            <element signature="e#2175#2176#0" expanded="true" />
-            <element signature="e#3446#5007#0" expanded="true" />
-            <element signature="e#5006#5007#0" expanded="true" />
-            <element signature="e#5009#7443#0" expanded="true" />
-            <element signature="e#7442#7443#0" expanded="true" />
-            <element signature="e#7628#7682#0" expanded="true" />
-            <element signature="e#7716#8651#0" expanded="true" />
-            <element signature="e#8650#8651#0" expanded="true" />
+            <element signature="e#1999#2176#0" expanded="false" />
+            <element signature="e#2175#2176#0" expanded="false" />
+            <element signature="e#3446#5007#0" expanded="false" />
+            <element signature="e#5006#5007#0" expanded="false" />
+            <element signature="e#5009#7443#0" expanded="false" />
+            <element signature="e#7442#7443#0" expanded="false" />
+            <element signature="e#7628#7682#0" expanded="false" />
+            <element signature="e#7716#8651#0" expanded="false" />
+            <element signature="e#8650#8651#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2829,11 +2813,11 @@
         <state relative-caret-position="358">
           <caret line="65" column="73" lean-forward="false" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
           <folding>
-            <element signature="e#1883#2044#0" expanded="true" />
-            <element signature="e#2043#2044#0" expanded="true" />
-            <element signature="e#3106#3153#0" expanded="true" />
-            <element signature="e#3183#4065#0" expanded="true" />
-            <element signature="e#4064#4065#0" expanded="true" />
+            <element signature="e#1883#2044#0" expanded="false" />
+            <element signature="e#2043#2044#0" expanded="false" />
+            <element signature="e#3106#3153#0" expanded="false" />
+            <element signature="e#3183#4065#0" expanded="false" />
+            <element signature="e#4064#4065#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2844,17 +2828,6 @@
           <caret line="11" column="78" lean-forward="false" selection-start-line="11" selection-start-column="78" selection-end-line="11" selection-end-column="78" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_journeys.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="37" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_journeys.xml">
@@ -2868,19 +2841,71 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_journeys.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="7" column="37" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recycler_view_journey_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/PofileFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="83" column="5" lean-forward="true" selection-start-line="40" selection-start-column="4" selection-end-line="83" selection-end-column="5" />
+        <state relative-caret-position="-46">
+          <caret line="85" column="5" lean-forward="false" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
           <folding>
-            <element signature="e#1847#3014#0" expanded="true" />
-            <element signature="e#2463#2516#0" expanded="true" />
-            <element signature="e#2570#2988#0" expanded="true" />
-            <element signature="e#2987#2988#0" expanded="true" />
-            <element signature="e#3013#3014#0" expanded="true" />
-            <element signature="e#3080#3411#0" expanded="true" />
-            <element signature="e#3410#3411#0" expanded="true" />
+            <element signature="e#2030#3199#0" expanded="true" />
+            <element signature="e#2646#2699#0" expanded="true" />
+            <element signature="e#2753#3173#0" expanded="true" />
+            <element signature="e#3172#3173#0" expanded="true" />
+            <element signature="e#3198#3199#0" expanded="true" />
+            <element signature="e#3265#3596#0" expanded="true" />
+            <element signature="e#3595#3596#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pofile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="23" column="43" lean-forward="false" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="43" />
+          <folding>
+            <element signature="e#587#616#0" expanded="true" />
+            <element signature="e#774#806#0" expanded="true" />
+            <element signature="e#1937#1972#0" expanded="true" />
+            <element signature="e#2242#2268#0" expanded="true" />
+            <element signature="e#2666#2701#0" expanded="true" />
+            <element signature="e#2936#2964#0" expanded="true" />
+            <element signature="e#3345#3380#0" expanded="true" />
+            <element signature="e#3712#3740#0" expanded="true" />
+            <element signature="e#4362#4381#0" expanded="true" />
+            <element signature="e#4995#5014#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/activities/SignupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-521">
+          <caret line="186" column="70" lean-forward="false" selection-start-line="186" selection-start-column="70" selection-end-line="186" selection-end-column="70" />
+          <folding />
         </state>
       </provider>
     </entry>
