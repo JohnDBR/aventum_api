@@ -1,3 +1,3 @@
 class JourneySerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :code, :start, :end, :capacity, :price, :journey_stop, :duration, :tags
 end

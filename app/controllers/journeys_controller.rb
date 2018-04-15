@@ -1,16 +1,18 @@
-class journeysController < ApplicationController
+class JourneysController < ApplicationController
   before_action :is_admin, only: [:create, :update, :destroy]
   before_action :set_journey, only: [:show, :join_journey, :update, :destroy]
 
   # GET /journeys
   def index
     render json: @user.journeys
+    # paginate json: @user.journeys.by_date, per_page: PER_PAGE
   end
 
-  # # POST /journeys/search
-  # def search
-  #   render json: journey.where("title like ?", "#{search_params[:title]}%")
-  # end
+  # POST /journeys/search
+  def search
+    # render json: Journey.where("title like ?", "#{search_params[:title]}%")
+    render json: Journey.all
+  end
 
   # GET /journeys/:id
   def show
@@ -42,7 +44,6 @@ class journeysController < ApplicationController
   # POST /journey
   def create
     @journey = Journey.new(journey_params)
-
     if @journey.save
       @user.journeys << @journey
       render json: @journey, status: :created, location: @journey

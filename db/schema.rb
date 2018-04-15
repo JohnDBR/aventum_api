@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_04_14_135008) do
     t.string "email", limit: 255
     t.string "phone", limit: 10
     t.string "password", limit: 255
+    t.integer "role", limit: 1
     t.string "location", limit: 255
     t.string "profile_picture", limit: 255
     t.datetime "created_at", null: false
