@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import org.json.JSONObject;
 public class AuthActivity extends AppCompatActivity {
 
     private static boolean logout;
+    private Toolbar toolbar;
 
     @Override
     protected void onStart() {
@@ -38,6 +40,9 @@ public class AuthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
+        toolbar = findViewById(R.id.journey_toolbar);
+        setSupportActionBar(toolbar);
+
         final TextInputLayout email = findViewById(R.id.txtEmail);
         final TextInputLayout pass = findViewById(R.id.txtPass);
 
@@ -50,7 +55,7 @@ public class AuthActivity extends AppCompatActivity {
                 loginButton.setEnabled(false);
 
                 final ProgressDialog progressDialog = new ProgressDialog(AuthActivity.this,
-                        R.style.AppTheme_Dark_Dialog);
+                        R.style.dialog_light);
                 progressDialog.setIndeterminate(true);
                 progressDialog.setMessage("Authenticating...");
                 progressDialog.show();
@@ -89,6 +94,11 @@ public class AuthActivity extends AppCompatActivity {
                             finish();
 
                         }
+                    }
+
+                    @Override
+                    public void sendFailure(String response) {
+
                     }
                 });
             }

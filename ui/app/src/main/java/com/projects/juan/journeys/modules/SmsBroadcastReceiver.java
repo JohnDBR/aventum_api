@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.projects.juan.journeys.activities.SignupActivity;
 
 public class SmsBroadcastReceiver extends BroadcastReceiver {
+
+    public static final String SMS_CONDITION = "Some condition";
     private static final String TAG = "SmsBroadcastReceiver";
     private SmsCode smsCode;
 
@@ -27,7 +29,7 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
                 smsBody += smsMessage.getMessageBody();
             }
 
-            if (smsBody.startsWith(SmsHelper.SMS_CONDITION)) {
+            if (smsBody.startsWith(SMS_CONDITION)) {
                 Log.d(TAG, "Sms with condition detected");
                 Toast.makeText(context, "BroadcastReceiver caught conditional SMS: " + smsBody, Toast.LENGTH_LONG).show();
             }

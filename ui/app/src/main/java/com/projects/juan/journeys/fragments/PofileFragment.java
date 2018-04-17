@@ -1,6 +1,7 @@
 package com.projects.juan.journeys.fragments;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,6 +30,8 @@ import org.json.JSONObject;
  */
 public class PofileFragment extends Fragment {
 
+    private ProgressDialog progressDialog;
+
     public PofileFragment() {
         // Required empty public constructor
     }
@@ -43,6 +46,10 @@ public class PofileFragment extends Fragment {
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+
+        progressDialog = new ProgressDialog(getContext(), R.style.dialog_light);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Loading...");
 
         final ImageView my_account_profile_pic = view.findViewById(R.id.my_account_profile_pic);
         final TextView my_account_name = view.findViewById(R.id.my_account_name);
@@ -66,6 +73,11 @@ public class PofileFragment extends Fragment {
                         Toast.makeText(getContext(), "Transaction complete successfully", Toast.LENGTH_SHORT).show();
                         getInfo(view, my_account_profile_pic, my_account_name, my_account_email, my_account_bio);
                     }
+
+                    @Override
+                    public void sendFailure(String response) {
+
+                    }
                 });
             }
         });
@@ -84,6 +96,7 @@ public class PofileFragment extends Fragment {
     }
 
     private void getInfo(final View view, final ImageView my_account_profile_pic, final TextView my_account_name, final TextView my_account_email, final TextView my_account_bio){
+        progressDialog.show();
         HttpRequests.getRequest(getContext(), getArguments().getString("token"), getResources().getString(R.string.GET_USER), "Network error, try again", new HttpRequests.CallBack(){
             @Override
             public void sendResponse(String response) {
@@ -93,10 +106,16 @@ public class PofileFragment extends Fragment {
                     my_account_email.setText("Email: " + user.getString("email"));
                     my_account_bio.setText("Coins: " + user.getString("coins") + "\n" + "CC: " + user.getString("cc") + "\n" + "Phone number: " + user.getString("phone"));
                     Glide.with(view).load(user.getString("profile_picture")).apply(RequestOptions.circleCropTransform()).into(my_account_profile_pic);
-//                    :id, :first_name, :last_name, :cc, :email, :phone, :location, :profile_picture
+                    progressDialog.cancel();
+                    //                    :id, :first_name, :last_name, :cc, :email, :phone, :location, :profile_picture
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }
+
+            @Override
+            public void sendFailure(String response) {
+
             }
         });
     }

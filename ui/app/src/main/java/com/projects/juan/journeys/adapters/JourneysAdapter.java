@@ -21,13 +21,11 @@ public class JourneysAdapter extends RecyclerView.Adapter<JourneysAdapter.ViewHo
     private Context context;
     private ArrayList<Journey> cours;
     private int layout;
-    private OnLongClickListener longClickListener;
     private OnClickListener clickListener;
 
-    public JourneysAdapter(ArrayList<Journey> cours, int layout, OnClickListener clickListener, OnLongClickListener longClickListener) {
+    public JourneysAdapter(ArrayList<Journey> cours, int layout, OnClickListener clickListener) {
         this.cours = cours;
         this.layout = layout;
-        this.longClickListener = longClickListener;
         this.clickListener = clickListener;
     }
 
@@ -41,7 +39,7 @@ public class JourneysAdapter extends RecyclerView.Adapter<JourneysAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(cours.get(position), clickListener, longClickListener);
+        holder.bind(cours.get(position), clickListener);
     }
 
     @Override
@@ -55,9 +53,7 @@ public class JourneysAdapter extends RecyclerView.Adapter<JourneysAdapter.ViewHo
         public TextView title;
         public TextView capacity;
         public TextView price;
-        public TextView journey_stop;
         public TextView duration;
-        public TextView tags;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -65,39 +61,24 @@ public class JourneysAdapter extends RecyclerView.Adapter<JourneysAdapter.ViewHo
             title = (TextView) itemView.findViewById(R.id.title_journey);
             capacity = (TextView) itemView.findViewById(R.id.capacity_journey);
             price = (TextView) itemView.findViewById(R.id.price_journey);
-            journey_stop = (TextView) itemView.findViewById(R.id.journey_stop);
             duration = (TextView) itemView.findViewById(R.id.duration_journey);
-            tags = (TextView) itemView.findViewById(R.id.tags_journey);
         }
 
-        public void bind(final Journey journey, final OnClickListener clickListener, final OnLongClickListener longClickListener){
+        public void bind(final Journey journey, final OnClickListener clickListener){
 
             code.setText(journey.getCode());
-            title.setText(journey.getStart() + " to " + journey.getEnd());
+            title.setText(journey.getStart() + " \u2192 " + journey.getEnd());
             price.setText("Price: " + journey.getPrice());
             capacity.setText("Capacity: " + journey.getCapacity());
-//            journey_stop.setText("");
             duration.setText("Duration: " + journey.getDuration());
-            tags.setText("Tags: " + journey.getTags());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     clickListener.onClick(journey);
                 }
-            });
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    longClickListener.onLongClick(journey);
-                    return true;
-                }
-            });
+            });;
         }
-    }
-
-    public interface OnLongClickListener{
-        void onLongClick(Journey journey);
     }
 
     public interface OnClickListener{

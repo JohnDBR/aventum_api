@@ -24,6 +24,7 @@
             android:maxLines="1"
             android:textColor="@color/colorSecondaryText"
             android:textSize="@dimen/text_size_primary"
+            android:text="Code"
             android:textStyle="bold" />
 
         <View
@@ -38,6 +39,7 @@
             android:layout_margin="@dimen/text_item_view"
             android:layout_weight="1"
             android:gravity="left"
+            android:text="Coins"
             android:textColor="@color/colorSecondaryText"
             android:textSize="@dimen/text_size_secondary" />
 
@@ -48,6 +50,7 @@
             android:layout_margin="@dimen/text_item_view"
             android:layout_weight="1"
             android:gravity="left"
+            android:text="Status"
             android:textColor="@color/colorSecondaryText"
             android:textSize="@dimen/text_size_secondary" />
 
@@ -58,6 +61,7 @@
             android:layout_margin="@dimen/text_item_view"
             android:layout_weight="1"
             android:gravity="left"
+            android:text="Kind"
             android:textColor="@color/colorSecondaryText"
             android:textSize="@dimen/text_size_secondary" />
 

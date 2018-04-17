@@ -5,13 +5,13 @@
     <string name="title_courses">My journeys</string>
     <string name="title_profile">My profile</string>
     <!-- Routes -->
-    <string name="ROOT">http://192.168.0.7:3000/</string>
-    <string name="LOGIN">http://192.168.0.7:3000/login</string>
-    <string name="GET_JOURNEYS">http://192.168.0.7:3000/journeys</string>
-    <string name="GET_SEARCH_TRANSACTIONS">http://192.168.0.7:3000/transactions/search</string>
-    <string name="GET_SEARCH_JOURNEYS">http://192.168.0.7:3000/journeys/search</string>
-    <string name="GET_USER">http://192.168.0.7:3000/users</string>
-    <string name="CREATE_TRANSACTION">http://192.168.0.7:3000/transactions</string>
+    <string name="ROOT">http://34.237.215.215:3000/</string>
+    <string name="LOGIN">http://34.237.215.215:3000/login</string>
+    <string name="GET_JOURNEYS">http://34.237.215.215:3000/journeys</string>
+    <string name="GET_SEARCH_TRANSACTIONS">http://34.237.215.215:3000/transactions/search</string>
+    <string name="GET_SEARCH_JOURNEYS">http://34.237.215.215:3000/journeys/search</string>
+    <string name="GET_USER">http://34.237.215.215:3000/users</string>
+    <string name="CREATE_TRANSACTION">http://34.237.215.215:3000/transactions</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -20,4 +20,6 @@
     <string name="btn_forgotpass_text">Forgot password</string>
     <string name="txt_email_login">Email</string>
     <string name="txt_password_login">Password</string>
+
+    <string name="title_activity_maps">Map</string>
 </resources>

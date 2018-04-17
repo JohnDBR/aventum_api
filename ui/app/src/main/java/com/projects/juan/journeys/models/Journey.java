@@ -1,10 +1,18 @@
 package com.projects.juan.journeys.models;
 
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 /**
  * Created by juan on 13/02/18.
  */
 
-public class Journey {
+public class Journey{
     private int id;
     private String code;
     private String start;
@@ -14,8 +22,9 @@ public class Journey {
     private int duration;
     private String journey_stop;
     private String tags;
+    private ArrayList<String> users;
 
-    public Journey(int id, String code, String start, String end, int capacity, int price, int duration, String journey_stop, String tags) {
+    public Journey(int id, String code, String start, String end, int capacity, int price, int duration, String journey_stop, String tags, JSONArray users) {
         this.id = id;
         this.code = code;
         this.start = start;
@@ -25,6 +34,14 @@ public class Journey {
         this.journey_stop = journey_stop;
         this.duration = duration;
         this.tags = tags;
+        this.users = new ArrayList<>();
+        for(int i = 0; i < users.length(); i++) {
+            try {
+                this.users.add(users.getJSONObject(i).getString("first_name").toString() + " " + users.getJSONObject(i).getString("last_name").toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public int getId() {
@@ -61,5 +78,9 @@ public class Journey {
 
     public String getTags() {
         return tags;
+    }
+
+    public ArrayList<String> getUsers() {
+        return users;
     }
 }

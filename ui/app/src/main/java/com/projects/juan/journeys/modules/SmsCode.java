@@ -2,7 +2,6 @@ package com.projects.juan.journeys.modules;
 
 public class SmsCode {
     private ChangeListener changeListener;
-    private String sms_code;
 
     public void setListener(ChangeListener changeListener){
         this.changeListener = changeListener;

@@ -56,14 +56,16 @@ public class HttpRequests {
             client.post(context, url, entity, "application/json", new AsyncHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    Log.d("response", new String(responseBody));
+//                    Log.d("response", new String(responseBody));
                     callBack.sendResponse(new String(responseBody));
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                    Log.d("response", new String(responseBody));
-                    Toast.makeText(context, errConnection, Toast.LENGTH_LONG).show();
+                    if(responseBody != null){
+                        Log.d("response", new String(responseBody));
+                        Toast.makeText(context, errConnection, Toast.LENGTH_LONG).show();
+                    }
                 }
 
             });
@@ -84,14 +86,18 @@ public class HttpRequests {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.d("response", new String(responseBody));
-                Toast.makeText(context, errConnection, Toast.LENGTH_LONG).show();
+                if(responseBody != null){
+                    Log.d("response", new String(responseBody));
+                    Toast.makeText(context, errConnection, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
 
     public interface CallBack {
+
         void sendResponse(String response);
+        void sendFailure(String response);
     }
 
 }

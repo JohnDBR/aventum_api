@@ -14,6 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -54,6 +55,7 @@ public class SignupActivity extends AppCompatActivity {
     Button loginButton;
 
     String tempImg;
+    private Toolbar toolbar;
 
     @Override
     protected void onDestroy() {
@@ -64,6 +66,10 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        toolbar = findViewById(R.id.sign_up_toolbar);
+        setSupportActionBar(toolbar);
+
         setContentView(R.layout.activity_signup);
         if (!hasReadSmsPermission()) {
             requestReadAndSendSmsPermission();
@@ -115,7 +121,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
     public void handleSignUp(View view){
-        final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this, R.style.AppTheme_Dark_Dialog);
+        final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this, R.style.dialog_light);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Loading...");
         progressDialog.show();
@@ -179,7 +185,7 @@ public class SignupActivity extends AppCompatActivity {
         RequestParams rp = new RequestParams();
         rp.put("first_name", first_name.getEditText().getText().toString());
         rp.put("last_name", last_name.getEditText().getText().toString());
-        rp.put("cc", cc.getEditText().getText().toString().isEmpty());
+        rp.put("cc", cc.getEditText().getText().toString());
         rp.put("email", email.getEditText().getText().toString());
         rp.put("phone", phone.getEditText().getText().toString());
         rp.put("password", password.getEditText().getText().toString());
@@ -193,19 +199,23 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void sendResponse(String response) {
                 try {
-                    progressDialog.cancel();
-                    loginButton.setEnabled(true);
                     JSONObject sign_up_response = new JSONObject(response);
                     Log.d("response", response);
                     if(response.contains("id")){
                         Toast.makeText(getApplicationContext(), "User created sucessfully", Toast.LENGTH_LONG).show();
-                        finish();
                     }else{
                         Toast.makeText(getApplicationContext(), sign_up_response.getString("err"), Toast.LENGTH_LONG).show();
                     }
+                    progressDialog.cancel();
+                    finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }
+
+            @Override
+            public void sendFailure(String response) {
+
             }
         });
     }
@@ -227,6 +237,11 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void sendResponse(String response) {
                 callBack.messageSent(code);
+            }
+
+            @Override
+            public void sendFailure(String response) {
+
             }
         });
     }

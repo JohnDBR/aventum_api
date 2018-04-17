@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.projects.juan.journeys.R;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
     private Bundle bundle;
+    private Toolbar toolbar;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -26,12 +28,15 @@ public class MainActivity extends AppCompatActivity {
             final android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_journeys:
+                    toolbar.setTitle("Search");
                     setFragment(transaction, new JourneysFragment());
                     return true;
                 case R.id.navigation_my_journeys:
+                    toolbar.setTitle("My Journeys");
                     setFragment(transaction, new MyJourneysFragment());
                     return true;
                 case R.id.navigation_profile:
+                    toolbar.setTitle("My Profile");
                     setFragment(transaction, new PofileFragment());
                     return true;
             }
@@ -43,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.journey_toolbar);
+        setSupportActionBar(toolbar);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

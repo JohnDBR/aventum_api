@@ -1,6 +1,7 @@
 package com.projects.juan.journeys.fragments;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -33,6 +34,7 @@ public class MyJourneysFragment extends Fragment {
     private static ArrayList<Journey> journeys = new ArrayList<>();
     private JourneysAdapter adapter;
     private SwipeRefreshLayout refreshLayout;
+    private ProgressDialog progressDialog;
 
     public MyJourneysFragment() {
         // Required empty public constructor
@@ -40,7 +42,7 @@ public class MyJourneysFragment extends Fragment {
 
     @Override
     public void onStart() {
-        if(journeys.isEmpty()) getjourneyses();
+        if(journeys.isEmpty()) getJourneys();
         super.onStart();
     }
 
@@ -54,12 +56,16 @@ public class MyJourneysFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-//        Toast.makeText(getContext(), token, Toast.LENGTH_LONG).show();
+
+        progressDialog = new ProgressDialog(getContext(), R.style.dialog_light);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Loading...");
+
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh_journeys);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getjourneyses();
+                getJourneys();
             }
         });
         //Instance and recycler
@@ -67,8 +73,6 @@ public class MyJourneysFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-//        layoutManager.scrollToPosition(notes.size() - 1);
-//        recyclerView.scrollToPosition(notes.size() - 1);
         recyclerView.setLayoutManager(layoutManager);
 
 //        Instance and config adapter
@@ -77,17 +81,13 @@ public class MyJourneysFragment extends Fragment {
             public void onClick(Journey journey) {
 
             }
-        }, new JourneysAdapter.OnLongClickListener() {
-            @Override
-            public void onLongClick(Journey journey) {
-
-            }
         });
         recyclerView.setAdapter(adapter);
 
     }
 
-    private void getjourneyses (){
+    private void getJourneys (){
+        progressDialog.show();
         HttpRequests.getRequest(getContext(), getArguments().getString("token"), getResources().getString(R.string.GET_JOURNEYS), "Network error, try again", new HttpRequests.CallBack(){
             @Override
             public void sendResponse(String response) {
@@ -96,14 +96,22 @@ public class MyJourneysFragment extends Fragment {
                 journeys.clear();
                 for(int i = 0; i < journeyses_response.length(); i++){
                     JSONObject cr = journeyses_response.getJSONObject(i);
-                    journeys.add(new Journey(cr.getInt("id"), cr.getString("code"), cr.getString("start"), cr.getString("end"), cr.getInt("capacity"), cr.getInt("price"), cr.getInt("duration"), cr.getString("journey_stop"), cr.getString("tags")));
+                    journeys.add(new Journey(cr.getInt("id"), cr.getString("code"), cr.getString("start"), cr.getString("end"),
+                            cr.getInt("capacity"), cr.getInt("price"), cr.getInt("duration"), cr.getString("journey_stop"),
+                            cr.getString("tags"), cr.getJSONArray("users")));
                 }
                 Collections.reverse(journeys);
                 adapter.notifyDataSetChanged();
                 refreshLayout.setRefreshing(false);
+                progressDialog.cancel();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            }
+
+            @Override
+            public void sendFailure(String response) {
+
             }
         });
     }
