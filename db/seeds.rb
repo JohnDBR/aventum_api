@@ -7,12 +7,9 @@ require 'faker'
 # # @class_two = JavClass.create(code: '987654321', name: 'Test class teacher_two', deanery: 'tetstesttest', teacher: @test_teacher_2)
 
 20.times do | n |
-  journey = Journey.create(code: Faker::Number.number(10), start: "Inicio #{n}", end: "Fin #{n}", capacity: 10, price: 5, journey_stop: 'test;test;test', duration: 30, tags: 'test;test;test')
-  # if n % 2 == 0
-  #   JavClass.create(code: Faker::Number.number(10), name: "Test class #{n}", deanery: 'tetstesttest', teacher: @test_teacher)
-  # else
-  #   JavClass.create(code: Faker::Number.number(10), name: "Test class #{n}", deanery: 'tetstesttest', teacher: @test_teacher_2)
-  # end
+  journey = Journey.create(code: Faker::Number.number(10), start: "Start #{n}", end: "End #{n}", capacity: 10, price: 5, journey_stop: 'test;test;test', duration: 30, tags: 'test;test;test')
+  driver = User.create(first_name: Faker::Name.name, last_name: Faker::Name.last_name, cc: Faker::Number.number(10), email: Faker::Internet.email, phone: Faker::Number.number(10), password: '12345', role: 'driver', location: Faker::Zelda.location, profile_picture: 'https://mvp-resources.s3.amazonaws.com/faeba478-9837-4c6f-a9f4-717f0ef85ebd1523736119.png')
+  journey.users << driver
 end
 
 40.times do | n |

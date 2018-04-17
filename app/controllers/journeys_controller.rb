@@ -10,8 +10,9 @@ class JourneysController < ApplicationController
 
   # POST /journeys/search
   def search
-    # render json: Journey.where("title like ?", "#{search_params[:title]}%")
-    render json: Journey.all
+    # paginate json: Student.where('id NOT IN (:id) AND (identity_number LIKE :search OR nick_name LIKE :search OR name LIKE :search)', id: JavClass.find(params[:id]).student_ids, search: "#{params[:search]}%").by_date, per_page: PER_PAGE  
+    # paginate json: Journey.where('id NOT IN (:id)', id: @user["id"]), per_page: PER_PAGE
+    render json: Journey.where('id NOT IN (:id)', id: @user["id"])
   end
 
   # GET /journeys/:id
