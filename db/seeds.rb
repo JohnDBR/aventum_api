@@ -2,6 +2,7 @@ require 'faker'
 
 def add_journey(journey, student)
 	journey.journey_stop += ";#{student.location}"
+	journey.capacity -= 1
 	journey.users << student
 end
 
