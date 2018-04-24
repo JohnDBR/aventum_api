@@ -12,7 +12,7 @@ class JourneysController < ApplicationController
   def search
     # paginate json: Student.where('id NOT IN (:id) AND (identity_number LIKE :search OR nick_name LIKE :search OR name LIKE :search)', id: JavClass.find(params[:id]).student_ids, search: "#{params[:search]}%").by_date, per_page: PER_PAGE  
     # paginate json: Journey.where('id NOT IN (:id)', id: @user["id"]), per_page: PER_PAGE
-    render json: Journey.where('id NOT IN (:id)', id: @user["id"])
+    render json: Journey.where('id NOT IN (:id)', id: User.first.journeys.ids)
   end
 
   # GET /journeys/:id
@@ -30,6 +30,7 @@ class JourneysController < ApplicationController
       else
         if @user.update({coins: @user["coins"] - @journey["price"]})
           if Transaction.new({user: @user, coins: @journey["price"], status: 'completed', transaction_code: "#{join_params[:code].upcase}", kind: 1}).save
+            @journey["capacity"] -= 1
             @user.journeys << @journey
             render json: @journey
           else
