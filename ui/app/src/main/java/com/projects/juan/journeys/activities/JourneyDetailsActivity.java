@@ -52,8 +52,8 @@ public class JourneyDetailsActivity extends AppCompatActivity {
             @Override
             public void onGetInfo(final Journey journey) {
                 toolbar.setTitle(journey.getStart() + " \u2192 " + journey.getEnd());
-                journeyDetailAdapter.addFragment(new DetailsFragment(), "Details");
-                journeyDetailAdapter.addFragment(new MapsFragment(), "Map");
+                journeyDetailAdapter.addFragment(new DetailsFragment(journey), "Details");
+                journeyDetailAdapter.addFragment(new MapsFragment(journey), "Map");
                 journeyDetailAdapter.addFragment(new UsersFragment(journey), "Users");
                 viewPager.setAdapter(journeyDetailAdapter);
                 tabLayout.setupWithViewPager(viewPager);

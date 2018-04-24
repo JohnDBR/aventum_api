@@ -23,7 +23,7 @@ public class Journey{
     private String journey_stop;
     private String tags;
     private ArrayList<String> users;
-
+    // Add User driver
     public Journey(int id, String code, String start, String end, int capacity, int price, int duration, String journey_stop, String tags, JSONArray users) {
         this.id = id;
         this.code = code;

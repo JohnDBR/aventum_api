@@ -1,6 +1,7 @@
 package com.projects.juan.journeys.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,6 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.projects.juan.journeys.R;
+import com.projects.juan.journeys.models.Journey;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,15 +31,16 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
+@SuppressLint("ValidFragment")
 public class MapsFragment extends Fragment {
 
     private SupportMapFragment mSupportMapFragment;
     private PolylineOptions polylineOptions;
+    private Journey journey;
 
-    public MapsFragment() {
-        // Required empty public constructor
+    public MapsFragment(Journey journey) {
+        this.journey = journey;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -1,6 +1,6 @@
 class JourneysController < ApplicationController
-  before_action :is_admin, only: [:create, :update, :destroy]
-  before_action :set_journey, only: [:show, :join_journey, :update, :destroy]
+  before_action :is_admin, only: [:create, :update, :destroy, :join_driver]
+  before_action :set_journey, only: [:show, :join_journey, :update, :destroy, :join_driver]
 
   # GET /journeys
   def index
@@ -12,12 +12,21 @@ class JourneysController < ApplicationController
   def search
     # paginate json: Student.where('id NOT IN (:id) AND (identity_number LIKE :search OR nick_name LIKE :search OR name LIKE :search)', id: JavClass.find(params[:id]).student_ids, search: "#{params[:search]}%").by_date, per_page: PER_PAGE  
     # paginate json: Journey.where('id NOT IN (:id)', id: @user["id"]), per_page: PER_PAGE
-    render json: Journey.where('id NOT IN (:id)', id: User.first.journeys.ids)
+    render json: Journey.where('id NOT IN (:id)', id: @user.journeys.ids)
   end
 
   # GET /journeys/:id
   def show
-    render json: {journey: @journey, users: @journey.users}
+    render json: {journey: @journey, driver: @journey.users.where('role = ?', 1), users: @journey.users.where('role NOT IN (:role)', role: 1)}
+  end
+
+  # POST /journey/:id/join/driver
+  def join_driver
+    if @journey.users.exists? params[:driver_id]
+      render json: {err: 'Already joined', code: '008'}
+    else
+      @journey.users << User.find(params[:driver_id])
+    end
   end
 
   # POST /journey/:id/join
@@ -31,6 +40,7 @@ class JourneysController < ApplicationController
         if @user.update({coins: @user["coins"] - @journey["price"]})
           if Transaction.new({user: @user, coins: @journey["price"], status: 'completed', transaction_code: "#{join_params[:code].upcase}", kind: 1}).save
             @journey["capacity"] -= 1
+            # Add location y journey stops
             @user.journeys << @journey
             render json: @journey
           else
