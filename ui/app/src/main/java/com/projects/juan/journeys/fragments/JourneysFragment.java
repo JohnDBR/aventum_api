@@ -1,9 +1,7 @@
 package com.projects.juan.journeys.fragments;
 
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,21 +10,13 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.projects.juan.journeys.R;
 import com.projects.juan.journeys.activities.JourneyDetailsActivity;
-import com.projects.juan.journeys.activities.MapsActivity;
-import com.projects.juan.journeys.activities.SignupActivity;
 import com.projects.juan.journeys.adapters.JourneysAdapter;
 import com.projects.juan.journeys.models.Journey;
 import com.projects.juan.journeys.modules.HttpRequests;
@@ -37,7 +27,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
