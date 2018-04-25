@@ -66,10 +66,14 @@ public class MapsFragment extends Fragment {
                 public void onMapReady(GoogleMap googleMap) {
                     if (googleMap != null) {
                         googleMap.getUiSettings().setAllGesturesEnabled(true);
-
+                        for(String point : journey.getJourney_stop().split(";")){
+                            if(!point.isEmpty()){
+                                String [] data = point.split(",");
+                                googleMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(data[0]), Double.parseDouble(data[1]))).title("Origin").snippet("Time: test"));
+                            }
+                        }
                         LatLng origin = new LatLng(10.978499, -74.817864);
                         LatLng dest = new LatLng(11.020743, -74.850721);
-                        googleMap.addMarker(new MarkerOptions().position(origin).title("Origin").snippet("Time: test"));
                         googleMap.addMarker(new MarkerOptions().position(dest).title("Dest").snippet("Time: test"));
 
                         CameraPosition cameraPosition = new CameraPosition.Builder().target(centerPoints(origin.latitude, origin.longitude, dest.latitude, dest.longitude)).zoom(13).bearing(angleBteweenPoints(origin.latitude, origin.longitude, dest.latitude, dest.longitude)).build();

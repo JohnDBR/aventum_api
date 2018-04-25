@@ -18,6 +18,7 @@ import com.projects.juan.journeys.fragments.DetailsFragment;
 import com.projects.juan.journeys.fragments.MapsFragment;
 import com.projects.juan.journeys.fragments.UsersFragment;
 import com.projects.juan.journeys.models.Journey;
+import com.projects.juan.journeys.models.User;
 import com.projects.juan.journeys.modules.HttpRequests;
 
 import org.json.JSONArray;
@@ -135,11 +136,13 @@ public class JourneyDetailsActivity extends AppCompatActivity {
             @Override
             public void sendResponse(String response) {
                 try {
-                    JSONObject journey_response = new JSONObject(response).getJSONObject("journey");
+                    JSONObject content = new JSONObject(response).getJSONObject("journey");
+                    JSONObject driver = new JSONObject(response).getJSONArray("driver").getJSONObject(0);
                     JSONArray users = new JSONObject(response).getJSONArray("users");
-                    Journey journey = new Journey(journey_response.getInt("id"), journey_response.getString("code"), journey_response.getString("start"), journey_response.getString("end"),
-                            journey_response.getInt("capacity"), journey_response.getInt("price"), journey_response.getInt("duration"), journey_response.getString("journey_stop"),
-                            journey_response.getString("tags"), users);
+                    Journey journey = new Journey(content.getInt("id"), content.getString("code"), content.getString("start"), content.getString("end"),
+                            content.getInt("capacity"), content.getInt("price"), content.getInt("duration"), content.getString("journey_stop"),
+                            content.getString("tags"), users, new User(driver.getInt("id"), driver.getString("first_name"), driver.getString("last_name"),
+                            driver.getString("cc"), driver.getString("email"), driver.getString("profile_picture")));
                     Log.d("PROBANDO_RESPONSE", journey.getId() + "");
                     callBack.onGetInfo(journey);
                     progressDialog.cancel();
