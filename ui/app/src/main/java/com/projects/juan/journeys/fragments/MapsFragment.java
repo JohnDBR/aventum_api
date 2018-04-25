@@ -26,6 +26,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.projects.juan.journeys.R;
 import com.projects.juan.journeys.models.Journey;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,18 +69,16 @@ public class MapsFragment extends Fragment {
                 public void onMapReady(GoogleMap googleMap) {
                     if (googleMap != null) {
                         googleMap.getUiSettings().setAllGesturesEnabled(true);
-                        for(String point : journey.getJourney_stop().split(";")){
-                            if(!point.isEmpty()){
-                                String [] data = point.split(",");
-                                Log.i("MAPS_DATA", "data: " + data[0] + " , " + data[1]);
-                                googleMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(data[0]), Double.parseDouble(data[1]))).title("Origin").snippet("Time: test"));
+                        for(int i = 0; i < journey.getStops().length(); i++){
+                            try {
+                                googleMap.addMarker(new MarkerOptions().position(new LatLng(journey.getStops().getJSONObject(i).getDouble("latitude"), journey.getStops().getJSONObject(i).getDouble("longitude"))).title("Origin").snippet("Time: test"));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
                         }
                         LatLng origin = new LatLng(10.978499, -74.817864);
                         LatLng dest = new LatLng(11.020743, -74.850721);
                         googleMap.addMarker(new MarkerOptions().position(dest).title("Dest").snippet("Time: test"));
-
-
 
                         CameraPosition cameraPosition = new CameraPosition.Builder().target(centerPoints(origin.latitude, origin.longitude, dest.latitude, dest.longitude)).zoom(13).bearing(angleBteweenPoints(origin.latitude, origin.longitude, dest.latitude, dest.longitude)).build();
                         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);

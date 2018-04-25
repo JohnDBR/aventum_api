@@ -3,6 +3,7 @@ package com.projects.juan.journeys.models;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -18,30 +19,33 @@ public class Journey{
     private int capacity;
     private int price;
     private int duration;
-    private String journey_stop;
     private String tags;
     private ArrayList<String> users;
     private User driver;
+    private JSONArray stops;
 
-    public Journey(int id, String code, String start, String end, int capacity, int price, int duration, String journey_stop, String tags, JSONArray users, User driver) {
-        this.id = id;
-        this.code = code;
-        this.start = start;
-        this.end = end;
-        this.capacity = capacity;
-        this.price = price;
-        this.journey_stop = journey_stop;
-        this.duration = duration;
-        this.tags = tags;
+    public Journey(JSONObject journey, JSONObject driver, JSONArray users) {
         this.users = new ArrayList<>();
-        for(int i = 0; i < users.length(); i++) {
+        if(journey != null){
             try {
-                this.users.add(users.getJSONObject(i).getString("first_name").toString() + " " + users.getJSONObject(i).getString("last_name").toString());
+                this.id = journey.getInt("id");
+                this.code = journey.getString("code");
+                this.start = journey.getString("start");
+                this.end = journey.getString("end");
+                this.capacity = journey.getInt("capacity");
+                this.price = journey.getInt("price");
+                this.duration = journey.getInt("duration");
+                this.tags = journey.getString("tags");
+                this.driver = new User(driver.getInt("id"), driver.getString("first_name"), driver.getString("last_name"), driver.getString("cc"),
+                        driver.getString("email"), driver.getString("profile_picture"));
+                for(int i = 0; i < users.length(); i++) {
+                    this.users.add(users.getJSONObject(i).getString("first_name").toString() + " " + users.getJSONObject(i).getString("last_name").toString());
+                }
+                this.stops = journey.getJSONArray("stops");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        this.driver = driver;
     }
 
     public int getId() {
@@ -72,10 +76,6 @@ public class Journey{
         return duration;
     }
 
-    public String getJourney_stop() {
-        return journey_stop;
-    }
-
     public String getTags() {
         return tags;
     }
@@ -86,5 +86,9 @@ public class Journey{
 
     public User getDriver() {
         return driver;
+    }
+
+    public JSONArray getStops() {
+        return stops;
     }
 }

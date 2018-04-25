@@ -136,15 +136,7 @@ public class JourneyDetailsActivity extends AppCompatActivity {
             @Override
             public void sendResponse(String response) {
                 try {
-                    JSONObject content = new JSONObject(response).getJSONObject("journey");
-                    JSONObject driver = new JSONObject(response).getJSONObject("driver");
-                    Log.i("jeff", content.getString("journey_stop"));
-                    JSONArray users = new JSONObject(response).getJSONArray("users");
-                    Journey journey = new Journey(content.getInt("id"), content.getString("code"), content.getString("start"), content.getString("end"),
-                            content.getInt("capacity"), content.getInt("price"), content.getInt("duration"), content.getString("journey_stop"),
-                            content.getString("tags"), users, new User(driver.getInt("id"), driver.getString("first_name"), driver.getString("last_name"),
-                            driver.getString("cc"), driver.getString("email"), driver.getString("profile_picture")));
-                    Log.d("PROBANDO_RESPONSE", journey.getId() + "");
+                    Journey journey = new Journey(new JSONObject(response).getJSONObject("journey"), new JSONObject(response).getJSONObject("driver"), new JSONObject(response).getJSONArray("users"));
                     callBack.onGetInfo(journey);
                     progressDialog.cancel();
                 } catch (JSONException e) {

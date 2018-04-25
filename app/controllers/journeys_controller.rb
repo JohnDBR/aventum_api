@@ -17,7 +17,7 @@ class JourneysController < ApplicationController
 
   # GET /journeys/:id
   def show
-    render json: {journey: @journey, driver: UserSerializer.new(@journey.users.where(role: 1).first), users: @journey.users.where('role NOT IN (:role)', role: 1)}
+    render json: {journey: JourneySerializer.new(@journey), driver: UserSerializer.new(@journey.users.where(role: 1).first), users: @journey.users.where('role NOT IN (:role)', role: 1).as_json(:only => [:id, :first_name, :last_name])}
   end
 
   # POST /journey/:id/join/driver
