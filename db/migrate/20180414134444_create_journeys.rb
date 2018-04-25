@@ -6,7 +6,6 @@ class CreateJourneys < ActiveRecord::Migration[5.2]
       t.string :end, limit: 255      
       t.integer :capacity, limit: 2
       t.integer :price, limit: 3
-      t.text :journey_stop, limit: 255
       t.integer :duration, limit: 3
       t.string :status, limit: 15, default: 'new'
       t.text :tags

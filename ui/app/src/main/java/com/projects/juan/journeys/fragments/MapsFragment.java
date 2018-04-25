@@ -78,6 +78,8 @@ public class MapsFragment extends Fragment {
                         LatLng dest = new LatLng(11.020743, -74.850721);
                         googleMap.addMarker(new MarkerOptions().position(dest).title("Dest").snippet("Time: test"));
 
+
+
                         CameraPosition cameraPosition = new CameraPosition.Builder().target(centerPoints(origin.latitude, origin.longitude, dest.latitude, dest.longitude)).zoom(13).bearing(angleBteweenPoints(origin.latitude, origin.longitude, dest.latitude, dest.longitude)).build();
                         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
                         googleMap.moveCamera(cameraUpdate);

@@ -138,6 +138,7 @@ public class JourneyDetailsActivity extends AppCompatActivity {
                 try {
                     JSONObject content = new JSONObject(response).getJSONObject("journey");
                     JSONObject driver = new JSONObject(response).getJSONObject("driver");
+                    Log.i("jeff", content.getString("journey_stop"));
                     JSONArray users = new JSONObject(response).getJSONArray("users");
                     Journey journey = new Journey(content.getInt("id"), content.getString("code"), content.getString("start"), content.getString("end"),
                             content.getInt("capacity"), content.getInt("price"), content.getInt("duration"), content.getString("journey_stop"),

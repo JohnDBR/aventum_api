@@ -9,7 +9,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :phone, limit: 10
       t.string :password, limit: 255
       t.integer :role, limit: 1  
-      t.string :location, limit: 255
+      t.float :latitude, limit: 10, default: 0
+      t.float :longitude, limit: 10, default: 0
       t.string :profile_picture, limit: 255
       t.timestamps
     end

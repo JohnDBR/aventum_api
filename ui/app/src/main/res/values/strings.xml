@@ -22,4 +22,6 @@
     <string name="txt_password_login">Password</string>
 
     <string name="title_activity_maps">Map</string>
+
+    <string name="driver">Driver</string>
 </resources>

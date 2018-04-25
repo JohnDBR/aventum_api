@@ -83,4 +83,8 @@ public class Journey{
     public ArrayList<String> getUsers() {
         return users;
     }
+
+    public User getDriver() {
+        return driver;
+    }
 }

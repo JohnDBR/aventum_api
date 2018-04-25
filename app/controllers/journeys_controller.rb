@@ -39,9 +39,9 @@ class JourneysController < ApplicationController
       else
         if @user.update({coins: @user["coins"] - @journey["price"]})
           if Transaction.new({user: @user, coins: @journey["price"], status: 'completed', transaction_code: "#{join_params[:code].upcase}", kind: 1}).save
-            @journey["capacity"] -= 1
-            # Add location y journey stops
+            @journey.stops << Stop.create(latitude: @user.latitude, longitude: @user.longitude, user_id: @user.id)
             @user.journeys << @journey
+            @journey.update(capacity: @journey.capacity - 1)
             render json: @journey
           else
             render json: {err: 'Error saving transaction', code: '011'}
@@ -84,11 +84,11 @@ class JourneysController < ApplicationController
     end
 
     def journey_params
-      params.permit(:code, :start, :end, :capacity, :price, :journey_stop, :duration, :tags)
+      params.permit(:code, :start, :end, :capacity, :price, :duration, :tags)
     end
 
     def search_params
-      params.permit(:code, :start, :end, :capacity, :price, :journey_stop, :duration, :tags)
+      params.permit(:code, :start, :end, :capacity, :price, :duration, :tags)
     end
 
     def join_params

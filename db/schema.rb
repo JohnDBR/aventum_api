@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_14_135008) do
+ActiveRecord::Schema.define(version: 2018_04_25_184815) do
 
   create_table "journeys", force: :cascade do |t|
     t.string "code", limit: 20
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2018_04_14_135008) do
     t.string "end", limit: 255
     t.integer "capacity", limit: 2
     t.integer "price", limit: 3
-    t.text "journey_stop", limit: 255
     t.integer "duration", limit: 3
     t.string "status", limit: 15, default: "new"
     t.text "tags"
@@ -29,6 +28,15 @@ ActiveRecord::Schema.define(version: 2018_04_14_135008) do
   create_table "journeys_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "journey_id", null: false
+  end
+
+  create_table "stops", force: :cascade do |t|
+    t.integer "journey_id"
+    t.integer "user_id"
+    t.string "latitude"
+    t.string "longitude"
+    t.index ["journey_id"], name: "index_stops_on_journey_id"
+    t.index ["user_id"], name: "index_stops_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -51,7 +59,8 @@ ActiveRecord::Schema.define(version: 2018_04_14_135008) do
     t.string "phone", limit: 10
     t.string "password", limit: 255
     t.integer "role", limit: 1
-    t.string "location", limit: 255
+    t.float "latitude", limit: 10, default: 0.0
+    t.float "longitude", limit: 10, default: 0.0
     t.string "profile_picture", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
