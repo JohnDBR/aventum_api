@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +70,7 @@ public class MapsFragment extends Fragment {
                         for(String point : journey.getJourney_stop().split(";")){
                             if(!point.isEmpty()){
                                 String [] data = point.split(",");
+                                Log.i("MAPS_DATA", "data: " + data[0] + " , " + data[1]);
                                 googleMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(data[0]), Double.parseDouble(data[1]))).title("Origin").snippet("Time: test"));
                             }
                         }

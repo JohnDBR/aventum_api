@@ -92,10 +92,10 @@ public class MyJourneysFragment extends Fragment {
             @Override
             public void sendResponse(String response) {
             try {
-                JSONArray journeyses_response = new JSONArray(response);
+                JSONArray content = new JSONArray(response);
                 journeys.clear();
-                for(int i = 0; i < journeyses_response.length(); i++){
-                    JSONObject cr = journeyses_response.getJSONObject(i);
+                for(int i = 0; i < content.length(); i++){
+                    JSONObject cr = content.getJSONObject(i);
                     journeys.add(new Journey(cr.getInt("id"), cr.getString("code"), cr.getString("start"), cr.getString("end"),
                             cr.getInt("capacity"), cr.getInt("price"), cr.getInt("duration"), cr.getString("journey_stop"),
                             cr.getString("tags"), cr.getJSONArray("users"), null));

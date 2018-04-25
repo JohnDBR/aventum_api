@@ -31,32 +31,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MapsFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MapsFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/MapsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JourneyDetailAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/adapters/JourneyDetailAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-133">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JourneyDetailsActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/activities/JourneyDetailsActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="139" column="89" lean-forward="false" selection-start-line="139" selection-start-column="89" selection-end-line="139" selection-end-column="89" />
-              <folding />
+            <state relative-caret-position="159">
+              <caret line="76" column="68" lean-forward="true" selection-start-line="76" selection-start-column="68" selection-end-line="76" selection-end-column="68" />
+              <folding>
+                <element signature="e#2438#3984#0" expanded="true" />
+                <element signature="e#3983#3984#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,8 +47,8 @@
       <file leaf-file-name="MyJourneysFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/MyJourneysFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="93" column="1" lean-forward="false" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
+            <state relative-caret-position="158">
+              <caret line="97" column="43" lean-forward="false" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -74,19 +57,15 @@
       <file leaf-file-name="JourneysFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/JourneysFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="100" column="70" lean-forward="false" selection-start-line="100" selection-start-column="70" selection-end-line="100" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UsersFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/UsersFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="5">
+              <caret line="91" column="27" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
+              <folding>
+                <element signature="e#1951#2126#0" expanded="true" />
+                <element signature="e#2125#2126#0" expanded="true" />
+                <element signature="e#2770#3207#0" expanded="true" />
+                <element signature="e#3206#3207#0" expanded="true" />
+                <element signature="e#3421#3475#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,7 +73,7 @@
       <file leaf-file-name="Journey.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/models/Journey.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
+            <state relative-caret-position="-147">
               <caret line="43" column="29" lean-forward="false" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -147,6 +126,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>journey_response</find>
+      <find>journeyses_response</find>
     </findStrings>
     <replaceStrings>
       <replace>content</replace>
@@ -2258,10 +2238,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/DetailsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/models/User.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/models/Journey.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/JourneysFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/MyJourneysFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/MapsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/activities/JourneyDetailsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/MyJourneysFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/JourneysFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/MapsFragment.java" />
       </list>
     </option>
   </component>
@@ -2303,6 +2283,13 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="journeys" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ui" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="journeys" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ui" type="1abcf292:AndroidViewProjectNode" />
@@ -2509,12 +2496,12 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.4969743" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2543,7 +2530,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2438#3984#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2567,7 +2557,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
           <caret line="100" column="70" lean-forward="false" selection-start-line="100" selection-start-column="70" selection-end-line="100" selection-end-column="70" />
-          <folding />
+          <folding>
+            <element signature="e#1951#2126#0" expanded="true" />
+            <element signature="e#2125#2126#0" expanded="true" />
+            <element signature="e#2770#3207#0" expanded="true" />
+            <element signature="e#3206#3207#0" expanded="true" />
+            <element signature="e#3421#3475#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2629,7 +2625,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2438#3984#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2726,10 +2725,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/adapters/JourneyDetailAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-133">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/activities/JourneyDetailsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="138" column="38" lean-forward="false" selection-start-line="138" selection-start-column="31" selection-end-line="138" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/UsersFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="17">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/MyJourneysFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="97" column="43" lean-forward="false" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -2756,7 +2779,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/models/Journey.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
+        <state relative-caret-position="-147">
           <caret line="43" column="29" lean-forward="false" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -2766,41 +2789,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/JourneysFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="100" column="70" lean-forward="false" selection-start-line="100" selection-start-column="70" selection-end-line="100" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/MyJourneysFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="93" column="1" lean-forward="false" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="5">
+          <caret line="91" column="27" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
+          <folding>
+            <element signature="e#1951#2126#0" expanded="true" />
+            <element signature="e#2125#2126#0" expanded="true" />
+            <element signature="e#2770#3207#0" expanded="true" />
+            <element signature="e#3206#3207#0" expanded="true" />
+            <element signature="e#3421#3475#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/fragments/MapsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/adapters/JourneyDetailAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-133">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/projects/juan/journeys/activities/JourneyDetailsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="139" column="89" lean-forward="false" selection-start-line="139" selection-start-column="89" selection-end-line="139" selection-end-column="89" />
-          <folding />
+        <state relative-caret-position="159">
+          <caret line="76" column="68" lean-forward="true" selection-start-line="76" selection-start-column="68" selection-end-line="76" selection-end-column="68" />
+          <folding>
+            <element signature="e#2438#3984#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
