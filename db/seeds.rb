@@ -1,8 +1,7 @@
 require 'faker'
 
 def add_journey(journey, student)
-	journey["journey_stop"] += ";#{student.location}"
-	journey["capacity"] -= 1
+	journey.update({journey_stop: journey.journey_stop + "#{student.location};", capacity: journey.capacity + 1})
 	journey.users << student
 end
 
@@ -13,7 +12,7 @@ end
 # # @class_two = JavClass.create(code: '987654321', name: 'Test class teacher_two', deanery: 'tetstesttest', teacher: @test_teacher_2)
 
 20.times do | n |
-  journey = Journey.create(code: Faker::Number.number(10), start: "Start #{n}", end: "End #{n}", capacity: 10, price: 5, journey_stop: 'test;test;test', duration: 30, tags: 'test;test;test')
+  journey = Journey.create(code: Faker::Number.number(10), start: "Start #{n}", end: "End #{n}", capacity: 10, price: 5, journey_stop: "", duration: 30, tags: 'test;test;test')
   driver = User.create(first_name: Faker::Name.name, last_name: Faker::Name.last_name, cc: Faker::Number.number(10), email: Faker::Internet.email, phone: Faker::Number.number(10), password: '12345', role: 'driver', location: "#{11.020743 + (Faker::Number.number(2).to_f / 100)}, #{74.850721 + (Faker::Number.number(2).to_f / 100)}", profile_picture: 'https://mvp-resources.s3.amazonaws.com/faeba478-9837-4c6f-a9f4-717f0ef85ebd1523736119.png')
   add_journey(journey, driver)
 end
