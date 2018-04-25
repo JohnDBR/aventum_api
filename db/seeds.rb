@@ -1,8 +1,10 @@
 require 'faker'
 
 def add_journey(journey, user)
-	journey.users << user
-	journey.update({journey_stop: journey.journey_stop + "#{user.location};", capacity: journey.capacity - 1})
+	if(!journey.users.exists?(user.id))
+		journey.users << user
+		journey.update({journey_stop: journey.journey_stop + "#{user.location};", capacity: journey.capacity - 1})
+	end
 end
 
 @test_student = User.create(first_name: 'Robert', last_name: 'Test', cc: '1234567899', email: 'robert@test.com', coins: 500, phone: '310675432', password: '12345', role: 'student', location: "#{11.020743 + (Faker::Number.number(2).to_f / 100)}, #{74.850721 + (Faker::Number.number(2).to_f / 100)}", profile_picture: 'https://mvp-resources.s3.amazonaws.com/faeba478-9837-4c6f-a9f4-717f0ef85ebd1523736119.png')
@@ -19,7 +21,9 @@ end
 
 40.times do | n |
   student = User.create(first_name: Faker::Name.name, last_name: Faker::Name.last_name, cc: Faker::Number.number(10), email: Faker::Internet.email, phone: Faker::Number.number(10), password: '12345', role: 'student', location: "#{11.020743 + (Faker::Number.number(2).to_f / 100)}, #{74.850721 + (Faker::Number.number(2).to_f / 100)}", profile_picture: 'https://mvp-resources.s3.amazonaws.com/faeba478-9837-4c6f-a9f4-717f0ef85ebd1523736119.png')
-  add_journey(Journey.find(Faker::Number.between(1, 18)), student)
+  5.times do | m |
+  	add_journey(Journey.find(Faker::Number.between(1, 18)), student)
+  end
   # Journey.find(2).student << test_student
 end
 
