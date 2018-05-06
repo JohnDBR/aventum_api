@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::API
   before_action :set_user
 
+  # Set global variable user
   def set_user
     begin
       token = AUTHENTICATION_SERVICE.decode_token(request.headers["Authorization"].split(" ")[1])[0]
+      # logger.info token
       if !token.nil? && token["exp"] > Time.now.to_i && token["id"].is_a?(Integer)
-        @user = User.find(token["id"])
+        @user = token["type"] == 'student' ? Student.find(token["id"]) : Driver.find(token["id"])
       else
         raise "USER_NOT_FOUND"
       end
@@ -28,15 +30,11 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def is_student
-    unless @user["role"] == "student"
-      render json: {err: 'Student not found', code: "007"}
-    end
-  end
-
-  def is_admin
-    unless @user["role"] == "admin"
-      render json: {err: 'Admin not found', code: "007"}
+  def get_user_token user, type
+    if !user.nil? && AUTHENTICATION_SERVICE.get_password(user["password"]) == params[:password]
+      return {token: "Bearer #{AUTHENTICATION_SERVICE.create_token(user[:id], 86400, type)}"}
+    else
+      return USER_NOT_FOUND
     end
   end
 end

@@ -1,0 +1,61 @@
+class DriversController < ApplicationController
+  # before_action :set_driver, only: [:show, :update, :destroy]
+  skip_before_action :set_user, only: [:login, :create, :reset_password, :update_password]
+  
+  # POST /login
+  def login
+    render json: get_user_token(Driver.find_by_email(driver_login_params[:email]), 'driver')
+  end
+
+  # GET /drivers
+  def index
+    @drivers = Driver.all
+
+    render json: @drivers
+  end
+
+  # GET /drivers/1
+  def show
+    render json: @driver
+  end
+
+  # POST /drivers
+  def create
+    @driver = Driver.new(driver_params)
+
+    if @driver.save
+      render json: @driver, status: :created, location: @driver
+    else
+      render json: @driver.errors, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH/PUT /drivers/1
+  def update
+    if @driver.update(driver_params)
+      render json: @driver
+    else
+      render json: @driver.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /drivers/1
+  def destroy
+    @driver.destroy
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_driver
+      @driver = Driver.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def driver_params
+      params.fetch(:driver, {})
+    end
+
+    def driver_login_params
+      params.permit(:email, :password)
+    end
+end

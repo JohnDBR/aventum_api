@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_25_184815) do
+ActiveRecord::Schema.define(version: 2018_05_04_194656) do
+
+  create_table "drivers", force: :cascade do |t|
+    t.string "first_name", limit: 255
+    t.string "last_name", limit: 255
+    t.string "cc", limit: 15
+    t.integer "coins", limit: 3, default: 10
+    t.string "email", limit: 255
+    t.string "phone", limit: 10
+    t.string "password", limit: 255
+    t.float "latitude", limit: 10, default: 0.0
+    t.float "longitude", limit: 10, default: 0.0
+    t.string "profile_picture", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "journeys", force: :cascade do |t|
+    t.integer "driver_id"
     t.string "code", limit: 20
     t.string "start", limit: 255
     t.string "end", limit: 255
@@ -23,10 +39,11 @@ ActiveRecord::Schema.define(version: 2018_04_25_184815) do
     t.text "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["driver_id"], name: "index_journeys_on_driver_id"
   end
 
-  create_table "journeys_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
+  create_table "journeys_students", id: false, force: :cascade do |t|
+    t.integer "student_id", null: false
     t.integer "journey_id", null: false
   end
 
@@ -39,6 +56,21 @@ ActiveRecord::Schema.define(version: 2018_04_25_184815) do
     t.index ["user_id"], name: "index_stops_on_user_id"
   end
 
+  create_table "students", force: :cascade do |t|
+    t.string "first_name", limit: 255
+    t.string "last_name", limit: 255
+    t.string "cc", limit: 15
+    t.integer "coins", limit: 3, default: 10
+    t.string "email", limit: 255
+    t.string "phone", limit: 10
+    t.string "password", limit: 255
+    t.float "latitude", limit: 10, default: 0.0
+    t.float "longitude", limit: 10, default: 0.0
+    t.string "profile_picture", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.integer "user_id"
     t.integer "coins", limit: 3
@@ -48,22 +80,6 @@ ActiveRecord::Schema.define(version: 2018_04_25_184815) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_transactions_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "first_name", limit: 255
-    t.string "last_name", limit: 255
-    t.string "cc", limit: 15
-    t.integer "coins", limit: 3, default: 10
-    t.string "email", limit: 255
-    t.string "phone", limit: 10
-    t.string "password", limit: 255
-    t.integer "role", limit: 1
-    t.float "latitude", limit: 10, default: 0.0
-    t.float "longitude", limit: 10, default: 0.0
-    t.string "profile_picture", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

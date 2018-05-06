@@ -1,6 +1,6 @@
-class CreateUsers < ActiveRecord::Migration[5.2]
+class CreateDrivers < ActiveRecord::Migration[5.2]
   def change
-    create_table :users do |t|
+    create_table :drivers do |t|
       t.string :first_name, limit: 255
       t.string :last_name, limit: 255
       t.string :cc, limit: 15
@@ -8,7 +8,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email, limit: 255
       t.string :phone, limit: 10
       t.string :password, limit: 255
-      t.integer :role, limit: 1  
       t.float :latitude, limit: 10, default: 0
       t.float :longitude, limit: 10, default: 0
       t.string :profile_picture, limit: 255

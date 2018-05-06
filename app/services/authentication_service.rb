@@ -16,11 +16,12 @@ class AuthenticationService
     Password.new pass
   end
 
-  def create_token id, exp
+  def create_token id, exp, type
     payload = {
       id: id,
       iat: Time.now.to_i,
-      exp: Time.now.to_i + exp
+      exp: Time.now.to_i + exp,
+      type: type
     }
     JWT.encode payload, @hmac_secret, 'HS256'
   end

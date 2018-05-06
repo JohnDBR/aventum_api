@@ -1,6 +1,7 @@
 class CreateJourneys < ActiveRecord::Migration[5.2]
   def change
     create_table :journeys do |t|
+      t.belongs_to :driver, index: true
       t.string :code, limit: 20
       t.string :start, limit: 255
       t.string :end, limit: 255      

@@ -17,21 +17,21 @@ class JourneysController < ApplicationController
 
   # GET /journeys/:id
   def show
-    render json: {journey: JourneySerializer.new(@journey), driver: UserSerializer.new(@journey.users.where(role: 1).first), users: @journey.users.where('role NOT IN (:role)', role: 1).as_json(:only => [:id, :first_name, :last_name])}
+    render json: {journey: JourneySerializer.new(@journey), driver: DriverSerializer.new(Driver.find(@journey.driver_id)), students: @journey.students.as_json(:only => [:id, :first_name, :last_name])}
   end
 
   # POST /journey/:id/join/driver
-  def join_driver
-    if @journey.users.exists? params[:driver_id]
-      render json: {err: 'Already joined', code: '008'}
-    else
-      @journey.users << User.find(params[:driver_id])
-    end
-  end
+  # def join_driver
+  #   if @journey.students.exists? params[:driver_id]
+  #     render json: {err: 'Already joined', code: '008'}
+  #   else
+  #     @journey.students << User.find(params[:driver_id])
+  #   end
+  # end
 
   # POST /journey/:id/join
   def join_journey
-    if @journey.users.exists? @user["id"]
+    if @journey.students.exists? @user["id"]
       render json: {err: 'Already joined', code: '008'}
     else
       if @user["coins"] < @journey["price"]

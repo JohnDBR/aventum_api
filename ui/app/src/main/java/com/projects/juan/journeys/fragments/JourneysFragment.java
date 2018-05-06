@@ -99,7 +99,7 @@ public class JourneysFragment extends Fragment {
                     journeys.clear();
                     for(int i = 0; i < content.length(); i++){
                         JSONObject cr = content.getJSONObject(i);
-                        journeys.add(new Journey(new JSONObject(response).getJSONObject("journey"), new JSONObject(response).getJSONObject("driver"), new JSONObject(response).getJSONArray("users")));
+                        journeys.add(new Journey(cr, null, null));
                     }
                     Collections.reverse(journeys);
                     adapter.notifyDataSetChanged();

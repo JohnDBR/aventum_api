@@ -36,14 +36,26 @@ public class Journey{
                 this.price = journey.getInt("price");
                 this.duration = journey.getInt("duration");
                 this.tags = journey.getString("tags");
-                this.driver = new User(driver.getInt("id"), driver.getString("first_name"), driver.getString("last_name"), driver.getString("cc"),
-                        driver.getString("email"), driver.getString("profile_picture"));
-                for(int i = 0; i < users.length(); i++) {
-                    this.users.add(users.getJSONObject(i).getString("first_name").toString() + " " + users.getJSONObject(i).getString("last_name").toString());
-                }
                 this.stops = journey.getJSONArray("stops");
             } catch (JSONException e) {
                 e.printStackTrace();
+            }
+        }
+        if(driver != null){
+            try {
+                this.driver = new User(driver.getInt("id"), driver.getString("first_name"), driver.getString("last_name"), driver.getString("cc"),
+                        driver.getString("email"), driver.getString("profile_picture"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        if(users != null){
+            for(int i = 0; i < users.length(); i++) {
+                try {
+                    this.users.add(users.getJSONObject(i).getString("first_name").toString() + " " + users.getJSONObject(i).getString("last_name").toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
