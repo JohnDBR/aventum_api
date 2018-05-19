@@ -11,4 +11,5 @@ USERS_ADDED_ERROR = {err: 'Error al agregar usuarios', err_code: '010'}
 ATTENDANCE = {msg: "Llamado a lista completado correctamente", err_code: '011'}
 ATTENDANCE_ERROR = {err: "Error al completar llamado a lista", err_code: '012'}
 USER_PERMISSIONS = {err: "El usuario no tiene persmisos para acceder a este contenido", err_code: '013'}
+TRANSACTION_ERROR = {err: 'Se ha presentado un error realizando la transacción', code: '014'}
 PER_PAGE = 10

@@ -1,5 +1,4 @@
 class TransactionsController < ApplicationController
-  before_action :set_user
   before_action :is_student, only: [:search, :show, :create, :update]
   before_action :set_transaction, only: [:show, :update]
 
@@ -18,7 +17,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     if @transaction.save
       unless @user.update({coins: @user["coins"].to_i + transaction_params["coins"].to_i})
-        render json: {err: 'Error seting user coins', code: '010'}
+        render json: TRANSACTION_ERROR
       end
       render json: @transaction
     else
@@ -41,7 +40,7 @@ class TransactionsController < ApplicationController
     end
 
     def transaction_params
-      params.permit(:coins, :transaction_code, :kind).merge(status: 'completed', user: @user)
+      params.permit(:coins, :transaction_code, :kind).merge(status: 'completed', student: @user)
     end
 
     def search_params

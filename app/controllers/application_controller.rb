@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::API
   before_action :set_user
-
   # Set global variable user
   def set_user
     begin
