@@ -7,7 +7,8 @@ class ApplicationController < ActionController::API
       token = AUTHENTICATION_SERVICE.decode_token(request.headers["Authorization"].split(" ")[1])[0]
       # logger.info token
       if !token.nil? && token["exp"] > Time.now.to_i && token["id"].is_a?(Integer)
-        @user = token["type"] == 'student' ? Student.find(token["id"]) : Driver.find(token["id"])
+        @type = token["type"]
+        @user = @type == 'student' ? Student.find(token["id"]) : Driver.find(token["id"])
       else
         raise "USER_NOT_FOUND"
       end
@@ -35,6 +36,12 @@ class ApplicationController < ActionController::API
       return {token: "Bearer #{AUTHENTICATION_SERVICE.create_token(user[:id], 86400, type)}"}
     else
       return USER_NOT_FOUND
+    end
+  end
+
+  def is_student
+    unless @type == 'student'
+      render status: 401, json: USER_PERMISSIONS
     end
   end
 end

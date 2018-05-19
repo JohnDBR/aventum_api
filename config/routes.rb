@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   # post 'journey/:id/join/driver', to: 'journeys#join_driver'
   get '/transactions/search', to: 'transactions#search'
   resources :transactions
+  # mount ActionCable.server => '/location'
 end
