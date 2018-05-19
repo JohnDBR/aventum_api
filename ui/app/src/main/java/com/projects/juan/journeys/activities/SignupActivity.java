@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
+import com.projects.juan.journeys.BuildConfig;
 import com.projects.juan.journeys.R;
 import com.projects.juan.journeys.modules.HttpRequests;
 import com.projects.juan.journeys.modules.SmsBroadcastReceiver;
@@ -90,7 +91,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
     public void galleryHandler(View view){
-        EasyImage.openChooserWithGallery(this, "Selecciona una imagen", 0);
+        EasyImage.openChooserWithGallery(this, getResources().getString(R.string.select_a_picture), 0);
     }
 
     @Override
@@ -137,7 +138,7 @@ public class SignupActivity extends AppCompatActivity {
                             }else{
                                 progressDialog.cancel();
                                 loginButton.setEnabled(true);
-                                Toast.makeText(getApplicationContext(), "Number verification failed, try again", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.number_verification_failed), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -150,32 +151,32 @@ public class SignupActivity extends AppCompatActivity {
         boolean valid = true;
 
         if (first_name.getEditText().getText().toString().isEmpty()) {
-            first_name.setError("Enter a valid first name");
+            first_name.setError(getResources().getString(R.string.first_name_validation));
             valid = false;
         }
 
         if (last_name.getEditText().getText().toString().isEmpty()) {
-            last_name.setError("Enter a valid last name");
+            last_name.setError(getResources().getString(R.string.last_name_validation));
             valid = false;
         }
 
         if (cc.getEditText().getText().toString().isEmpty()) {
-            cc.setError("Enter a valid CC");
+            cc.setError(getResources().getString(R.string.cc_validation));
             valid = false;
         }
 
         if (email.getEditText().getText().toString().isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email.getEditText().getText().toString()).matches()) {
-            email.setError("Enter a valid email address");
+            email.setError(getResources().getString(R.string.email_address_validation));
             valid = false;
         }
 
         if (phone.getEditText().getText().toString().isEmpty()) {
-            phone.setError("Enter a valid CC");
+            phone.setError(getResources().getString(R.string.phone_number_validation));
             valid = false;
         }
 
         if (password.getEditText().getText().toString().isEmpty()) {
-            password.setError("Enter a valid CC");
+            password.setError(getResources().getString(R.string.password_validation));
             valid = false;
         }
 
@@ -195,16 +196,16 @@ public class SignupActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        HttpRequests.postMultipartRequest(SignupActivity.this, null, getResources().getString(R.string.GET_USER), rp, "Sign up error", new HttpRequests.CallBack() {
+        HttpRequests.postMultipartRequest(SignupActivity.this, null, BuildConfig.GET_USER, rp, "Sign up error", new HttpRequests.CallBack() {
             @Override
             public void sendResponse(String response) {
                 try {
                     JSONObject sign_up_response = new JSONObject(response);
                     Log.d("response", response);
                     if(response.contains("id")){
-                        Toast.makeText(getApplicationContext(), "User created sucessfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.user_created), Toast.LENGTH_LONG).show();
                     }else{
-                        Toast.makeText(getApplicationContext(), sign_up_response.getString("err"), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), sign_up_response.getString(getResources().getString(R.string.network_error)), Toast.LENGTH_LONG).show();
                     }
                     progressDialog.cancel();
                     finish();
@@ -233,7 +234,7 @@ public class SignupActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        HttpRequests.postRequest(getApplicationContext(), null, "http://smsgateway.me/api/v3/messages/send", params, "Number verification failed", new HttpRequests.CallBack() {
+        HttpRequests.postRequest(getApplicationContext(), null, BuildConfig.SMS_GATEWAY, params, getResources().getString(R.string.sms_gateway_error), new HttpRequests.CallBack() {
             @Override
             public void sendResponse(String response) {
                 callBack.messageSent(code);

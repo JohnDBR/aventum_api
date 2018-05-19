@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.projects.juan.journeys.BuildConfig;
 import com.projects.juan.journeys.R;
 import com.projects.juan.journeys.adapters.JourneyDetailAdapter;
 import com.projects.juan.journeys.fragments.DetailsFragment;
@@ -43,7 +44,7 @@ public class JourneyDetailsActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this, R.style.dialog_light);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Loading...");
+        progressDialog.setMessage(getResources().getString(R.string.loading));
 
         tabLayout = findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.viewPager);
@@ -53,9 +54,9 @@ public class JourneyDetailsActivity extends AppCompatActivity {
             @Override
             public void onGetInfo(final Journey journey) {
                 toolbar.setTitle(journey.getStart() + " \u2192 " + journey.getEnd());
-                journeyDetailAdapter.addFragment(new DetailsFragment(journey), "Details");
-                journeyDetailAdapter.addFragment(new MapsFragment(journey), "Map");
-                journeyDetailAdapter.addFragment(new UsersFragment(journey), "Users");
+                journeyDetailAdapter.addFragment(new DetailsFragment(journey), getResources().getString(R.string.details));
+                journeyDetailAdapter.addFragment(new MapsFragment(journey), getResources().getString(R.string.title_activity_maps));
+                journeyDetailAdapter.addFragment(new UsersFragment(journey), getResources().getString(R.string.users));
                 viewPager.setAdapter(journeyDetailAdapter);
                 tabLayout.setupWithViewPager(viewPager);
 
@@ -63,8 +64,8 @@ public class JourneyDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(JourneyDetailsActivity.this);
-                        builder.setTitle("Join to " + journey.getCode());
-                        builder.setMessage("Price: " + journey.getPrice());
+                        builder.setTitle(getResources().getString(R.string.join_to) + journey.getCode());
+                        builder.setMessage(getResources().getString(R.string.price) + journey.getPrice());
 
                         builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                             @Override
@@ -76,7 +77,7 @@ public class JourneyDetailsActivity extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                                 HttpRequests.postRequest(getApplicationContext(), getIntent().getStringExtra("token"),
-                                        getResources().getString(R.string.GET_JOURNEYS) + "/" + getIntent().getIntExtra("id", 0) + "/join", join_params, "Network error", new HttpRequests.CallBack() {
+                                        BuildConfig.JOURNEYS + "/" + getIntent().getIntExtra("id", 0) + "/join", join_params, getResources().getString(R.string.network_error), new HttpRequests.CallBack() {
                                             @Override
                                             public void sendResponse(String response) {
                                                 try {
@@ -85,7 +86,7 @@ public class JourneyDetailsActivity extends AppCompatActivity {
                                                         Log.d("err", response);
                                                         Toast.makeText(getApplicationContext(), jr.getString("err"), Toast.LENGTH_LONG).show();
                                                     }else{
-                                                        Toast.makeText(getApplicationContext(), "Joined to " + getIntent().getIntExtra("id", 0) + " successfully", Toast.LENGTH_LONG).show();
+                                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.join_to) + getIntent().getIntExtra("id", 0) + " successfully", Toast.LENGTH_LONG).show();
                                                     }
                                                 } catch (JSONException e) {
                                                     e.printStackTrace();
@@ -99,7 +100,7 @@ public class JourneyDetailsActivity extends AppCompatActivity {
                                         });
                             }
                         });
-                        builder.setNegativeButton("Cancel", null);
+                        builder.setNegativeButton(getResources().getString(R.string.cancel), null);
                         AlertDialog dialog = builder.create();
                         dialog.show();
                     }
@@ -132,7 +133,7 @@ public class JourneyDetailsActivity extends AppCompatActivity {
 
     private void getInfo(final CallBack callBack){
         progressDialog.show();
-        HttpRequests.getRequest(getApplicationContext(), getIntent().getStringExtra("token"), getResources().getString(R.string.GET_JOURNEYS) + "/" + getIntent().getIntExtra("id", 0), "Journeys not found", new HttpRequests.CallBack() {
+        HttpRequests.getRequest(getApplicationContext(), getIntent().getStringExtra("token"), BuildConfig.JOURNEYS + "/" + getIntent().getIntExtra("id", 0), getResources().getString(R.string.journeys_not_found), new HttpRequests.CallBack() {
             @Override
             public void sendResponse(String response) {
                 try {

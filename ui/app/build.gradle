@@ -12,6 +12,16 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
+        debug {
+//            34.237.215.215
+            buildConfigField "String", "LOGIN", '"http://192.168.1.251:3000/login"'
+            buildConfigField "String", "JOURNEYS", '"http://192.168.1.251:3000/journeys"'
+            buildConfigField "String", "SEARCH_TRANSACTIONS", '"http://192.168.1.251:3000/transactions/search"'
+            buildConfigField "String", "SEARCH_JOURNEYS", '"http://192.168.1.251:3000/journeys/search"'
+            buildConfigField "String", "GET_USER", '"http://192.168.1.251:3000/users"'
+            buildConfigField "String", "CREATE_TRANSACTION", '"http://192.168.1.251:3000/transactions"'
+            buildConfigField "String", "SMS_GATEWAY", '"http://smsgateway.me/api/v3/messages/send"'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

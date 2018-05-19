@@ -28,15 +28,15 @@ public class MainActivity extends AppCompatActivity {
             final android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_journeys:
-                    toolbar.setTitle("Search");
+                    toolbar.setTitle(getResources().getString(R.string.title_search));
                     setFragment(transaction, new JourneysFragment());
                     return true;
                 case R.id.navigation_my_journeys:
-                    toolbar.setTitle("My Journeys");
+                    toolbar.setTitle(getResources().getString(R.string.title_journeys));
                     setFragment(transaction, new MyJourneysFragment());
                     return true;
                 case R.id.navigation_profile:
-                    toolbar.setTitle("My Profile");
+                    toolbar.setTitle(getResources().getString(R.string.title_profile));
                     setFragment(transaction, new PofileFragment());
                     return true;
             }

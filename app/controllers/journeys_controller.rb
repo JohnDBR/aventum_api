@@ -17,7 +17,7 @@ class JourneysController < ApplicationController
 
   # GET /journeys/:id
   def show
-    render json: {journey: JourneySerializer.new(@journey), driver: DriverSerializer.new(Driver.find(@journey.driver_id)), students: @journey.students.as_json(:only => [:id, :first_name, :last_name])}
+    render json: {journey: JourneySerializer.new(@journey), stops: @journey.stops, driver: DriverSerializer.new(Driver.find(@journey.driver_id)), students: @journey.students.as_json(:only => [:id, :first_name, :last_name])}
   end
 
   # POST /journey/:id/join/driver

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.projects.juan.journeys.BuildConfig;
 import com.projects.juan.journeys.R;
 import com.projects.juan.journeys.modules.HttpRequests;
 
@@ -57,7 +58,7 @@ public class AuthActivity extends AppCompatActivity {
                 final ProgressDialog progressDialog = new ProgressDialog(AuthActivity.this,
                         R.style.dialog_light);
                 progressDialog.setIndeterminate(true);
-                progressDialog.setMessage("Authenticating...");
+                progressDialog.setMessage(getResources().getString(R.string.Authenticating));
                 progressDialog.show();
 
                 JSONObject request_params = new JSONObject();
@@ -68,14 +69,14 @@ public class AuthActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                HttpRequests.postRequest(getBaseContext(), null, getResources().getString(R.string.LOGIN), request_params, "Network error, try again", new HttpRequests.CallBack(){
+                HttpRequests.postRequest(getBaseContext(), null, BuildConfig.LOGIN, request_params, getResources().getString(R.string.network_error), new HttpRequests.CallBack(){
                     @Override
                     public void sendResponse(String response) {
                         loginButton.setEnabled(true);
                         progressDialog.cancel();
-
+                        // Mejorar esto, verificar con codigo de la respuesta
                         if(response.contains("err")){
-                            Toast.makeText(getApplicationContext(), "User not found", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.user_not_found), Toast.LENGTH_LONG).show();
                         }else{
                             SharedPreferences sharedPreferences = getSharedPreferences("user_pref", getApplicationContext().MODE_PRIVATE);
                             SharedPreferences.Editor writer = sharedPreferences.edit();

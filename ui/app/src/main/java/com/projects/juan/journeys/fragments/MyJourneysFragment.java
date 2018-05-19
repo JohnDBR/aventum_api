@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.projects.juan.journeys.BuildConfig;
 import com.projects.juan.journeys.R;
 import com.projects.juan.journeys.adapters.JourneysAdapter;
 import com.projects.juan.journeys.models.Journey;
@@ -88,7 +89,7 @@ public class MyJourneysFragment extends Fragment {
 
     private void getJourneys (){
         progressDialog.show();
-        HttpRequests.getRequest(getContext(), getArguments().getString("token"), getResources().getString(R.string.GET_JOURNEYS), "Network error, try again", new HttpRequests.CallBack(){
+        HttpRequests.getRequest(getContext(), getArguments().getString("token"), BuildConfig.JOURNEYS, "Network error, try again", new HttpRequests.CallBack(){
             @Override
             public void sendResponse(String response) {
             try {

@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigation_my_journeys"
         android:icon="@drawable/ic_touch_app_24px"
-        android:title="@string/title_courses" />
+        android:title="@string/title_journeys" />
 
     <item
         android:id="@+id/navigation_profile"

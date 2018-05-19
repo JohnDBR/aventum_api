@@ -1,19 +1,10 @@
 <resources>
+    <!-- Menu titles -->
     <string name="app_name">Journeys</string>
     <string name="title_activity_main">Journeys</string>
     <string name="title_search">Search</string>
-    <string name="title_courses">My journeys</string>
+    <string name="title_journeys">My journeys</string>
     <string name="title_profile">My profile</string>
-    <!-- Routes -->
-    <string name="ROOT">http://34.237.215.215:3000/</string>
-    <string name="LOGIN">http://34.237.215.215:3000/login</string>
-    <string name="GET_JOURNEYS">http://34.237.215.215:3000/journeys</string>
-    <string name="GET_SEARCH_TRANSACTIONS">http://34.237.215.215:3000/transactions/search</string>
-    <string name="GET_SEARCH_JOURNEYS">http://34.237.215.215:3000/journeys/search</string>
-    <string name="GET_USER">http://34.237.215.215:3000/users</string>
-    <string name="CREATE_TRANSACTION">http://34.237.215.215:3000/transactions</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="btn_login_text">Log In</string>
     <string name="btn_signup_text">Don\'t have an account? Sign Up</string>
@@ -24,4 +15,25 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="driver">Driver</string>
+
+    <string name="Authenticating">Authenticating...</string>
+    <string name="user_not_found">User not found</string>
+    <string name="network_error">Network error, try again</string>
+    <string name="loading">Loading...</string>
+    <string name="details">Details</string>
+    <string name="users">Users</string>
+    <string name="join_to">Join to</string>
+    <string name="price">Price:</string>
+    <string name="cancel">Cancel</string>
+    <string name="journeys_not_found">Journeys not found</string>
+    <string name="select_a_picture">Select a picture</string>
+    <string name="number_verification_failed">Number verification failed, try again</string>
+    <string name="first_name_validation">Enter a valid first name</string>
+    <string name="last_name_validation">Enter a valid last name</string>
+    <string name="cc_validation">Enter a valid CC</string>
+    <string name="email_address_validation">Enter a valid email address</string>
+    <string name="phone_number_validation">Enter a valid phone number</string>
+    <string name="password_validation">Enter a valid password</string>
+    <string name="user_created">User created sucessfully</string>
+    <string name="sms_gateway_error">Number verification failed</string>
 </resources>

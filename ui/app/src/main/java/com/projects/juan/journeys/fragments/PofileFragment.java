@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.projects.juan.journeys.BuildConfig;
 import com.projects.juan.journeys.R;
 import com.projects.juan.journeys.activities.AuthActivity;
 import com.projects.juan.journeys.activities.MainActivity;
@@ -67,7 +68,7 @@ public class PofileFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                HttpRequests.postRequest(getContext(), getArguments().getString("token"), getResources().getString(R.string.CREATE_TRANSACTION), transaction_params, "Error processing transaction", new HttpRequests.CallBack(){
+                HttpRequests.postRequest(getContext(), getArguments().getString("token"), BuildConfig.CREATE_TRANSACTION, transaction_params, "Error processing transaction", new HttpRequests.CallBack(){
                     @Override
                     public void sendResponse(String response) {
                         Toast.makeText(getContext(), "Transaction complete successfully", Toast.LENGTH_SHORT).show();
@@ -97,7 +98,7 @@ public class PofileFragment extends Fragment {
 
     private void getInfo(final View view, final ImageView my_account_profile_pic, final TextView my_account_name, final TextView my_account_email, final TextView my_account_bio){
         progressDialog.show();
-        HttpRequests.getRequest(getContext(), getArguments().getString("token"), getResources().getString(R.string.GET_USER), "Network error, try again", new HttpRequests.CallBack(){
+        HttpRequests.getRequest(getContext(), getArguments().getString("token"), BuildConfig.GET_USER, "Network error, try again", new HttpRequests.CallBack(){
             @Override
             public void sendResponse(String response) {
                 try {

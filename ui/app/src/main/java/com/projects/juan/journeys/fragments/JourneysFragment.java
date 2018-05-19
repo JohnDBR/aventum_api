@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
+import com.projects.juan.journeys.BuildConfig;
 import com.projects.juan.journeys.R;
 import com.projects.juan.journeys.activities.JourneyDetailsActivity;
 import com.projects.juan.journeys.adapters.JourneysAdapter;
@@ -91,7 +92,7 @@ public class JourneysFragment extends Fragment {
 
     private void getjourneys(JSONObject search){
         progressDialog.show();
-        HttpRequests.postRequest(getContext(), getArguments().getString("token"), getResources().getString(R.string.GET_SEARCH_JOURNEYS), search, "journeyses not found", new HttpRequests.CallBack() {
+        HttpRequests.postRequest(getContext(), getArguments().getString("token"), BuildConfig.SEARCH_JOURNEYS, search, "journeyses not found", new HttpRequests.CallBack() {
             @Override
             public void sendResponse(String response) {
                 try {
