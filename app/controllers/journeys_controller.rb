@@ -10,7 +10,7 @@ class JourneysController < ApplicationController
 
   # POST /journeys/search
   def search
-    # paginate json: Student.where('id NOT IN (:id) AND (identity_number LIKE :search OR nick_name LIKE :search OR name LIKE :search)', id: JavClass.find(params[:id]).student_ids, search: "#{params[:search]}%").by_date, per_page: PER_PAGE  
+    # paginate json: Student.where('id NOT IN (:id) AND (identity_number LIKE :search OR nick_name LIKE :search OR name LIKE :search)', id: JavClass.find(params[:id]).student_ids, search: "#{params[:search]}%").by_date, per_page: PER_PAGE
     # paginate json: Journey.where('id NOT IN (:id)', id: @user["id"]), per_page: PER_PAGE
     render json: Journey.where('id NOT IN (:id) AND capacity > 0', id: @user.journeys.ids)
   end
@@ -38,16 +38,16 @@ class JourneysController < ApplicationController
         render json: {err: 'Insufficient coins', code: '009'}
       else
         if @user.update({coins: @user["coins"] - @journey["price"]})
-          if Transaction.new({user: @user, coins: @journey["price"], status: 'completed', transaction_code: "#{join_params[:code].upcase}", kind: 1}).save
+          if Transaction.new({student_id: @user.id, coins: @journey["price"], status: 'completed', transaction_code: "#{join_params[:code].upcase}", kind: 1}).save
             @journey.stops << Stop.create(latitude: @user.latitude, longitude: @user.longitude, user_id: @user.id)
             @user.journeys << @journey
             @journey.update(capacity: @journey.capacity - 1)
             render json: @journey
           else
-            render json: {err: 'Error saving transaction', code: '011'}
+            render json: TRANSACTION_ERROR
           end
         else
-          render json: {err: 'Error geting user coins', code: '010'}
+          render json: USER_COINS_ERROR
         end
       end
     end

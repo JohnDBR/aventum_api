@@ -40,7 +40,8 @@ class TransactionsController < ApplicationController
     end
 
     def transaction_params
-      params.permit(:coins, :transaction_code, :kind).merge(status: 'completed', student: @user)
+      logger.debug @user
+      params.permit(:coins, :transaction_code, :kind).merge(status: 'completed', student_id: @user.id)
     end
 
     def search_params

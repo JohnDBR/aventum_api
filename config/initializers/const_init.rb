@@ -12,4 +12,5 @@ ATTENDANCE = {msg: "Llamado a lista completado correctamente", err_code: '011'}
 ATTENDANCE_ERROR = {err: "Error al completar llamado a lista", err_code: '012'}
 USER_PERMISSIONS = {err: "El usuario no tiene persmisos para acceder a este contenido", err_code: '013'}
 TRANSACTION_ERROR = {err: 'Se ha presentado un error realizando la transacción', code: '014'}
+USER_COINS_ERROR = {err: 'Se ha presentado un error obteniendo las monedas del usuario', code: '014'}
 PER_PAGE = 10

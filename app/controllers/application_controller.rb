@@ -12,7 +12,7 @@ class ApplicationController < ActionController::API
         raise "USER_NOT_FOUND"
       end
     rescue Exception => e
-      render status: 401, json: USER_NOT_FOUND    
+      render status: 401, json: USER_NOT_FOUND
     end
   end
 
